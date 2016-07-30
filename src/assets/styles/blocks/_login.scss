@@ -1,0 +1,81 @@
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.login p {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: $large-spacing 0;
+  color: rgba($white, .5);
+}
+
+.login__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 50rem;
+}
+
+.login__logo {
+  text-align: center;
+  font-size: 6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -.05em;
+}
+
+.login__username,
+.login__password {
+  color: $black;
+  padding-left: 6rem;
+  position: relative;
+  margin-top: $medium-spacing;
+
+  input {
+    width: 100%;
+    height: 6rem;
+    padding: 0 $medium-spacing;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  &:before {
+    @include fa-icon;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6rem;
+    line-height: 6rem;
+    text-align: center;
+    font-size: 2rem;
+    background: $off-white;
+    display: block;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    color: rgba($black, .5);
+  }
+
+}
+
+.login__username:before { content: '\f007' }
+.login__password:before { content: '\f084' }
+
+.login__submit {
+  font-size: 2rem;
+  display: block;
+  width: 100%;
+  height: 6rem;
+  line-height: 6rem;
+  padding: 0;
+  margin-top: $medium-spacing;
+}

@@ -15,7 +15,6 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,6 +24,9 @@ time, mark, audio, video {
   font-smoothing: antialiased;
   font-feature-settings: "kern", "liga", "pnum" "ss01";
   vertical-align: baseline;
+}
+* {
+  box-sizing: border-box;
 }
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -217,4 +219,7 @@ optgroup {
 
 * {
   tap-highlight-color: rgba(0,0,0,0);
+}
+*:not(.button):not(input) {
+  cursor: default;
 }

@@ -27,7 +27,7 @@ const PATHS = {
         dest:   BASE + 'dist/assets/styles/'
     },
     scripts: {
-        src:  BASE + 'src/**/*.js',
+        src:   [BASE + 'src/**/*.js', BASE + 'src/**/*.jsx'],
         dest:   BASE + 'dist/'
     },
     images: {

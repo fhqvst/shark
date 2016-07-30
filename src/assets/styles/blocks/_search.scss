@@ -1,8 +1,21 @@
+.search {
+  position: relative;
+  &:after {
+    @include fa-icon;
+    position: absolute;
+    top: 50%;
+    left: $medium-spacing;
+    transform: translateY(-50%);
+    content: '\f002';
+    color: rgba($white, .5);
+  }
+}
+
 .search__input {
   background: $ghost-white;
   border: none;
   border-radius: 999em;
-  padding: $small-spacing $medium-spacing;
+  padding: $small-spacing $medium-spacing $small-spacing 4rem;
   outline: none;
   width: 30rem;
 }

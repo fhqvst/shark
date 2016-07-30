@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Login from './Login';
 import { connect } from 'react-redux'
 
-const Shark = () => {
-    return (
+const Shark = ({ account }) => {
+    return account.authenticated ?
         <main>
             <div className="titlebar"></div>
             <header className="header">
@@ -20,22 +21,21 @@ const Shark = () => {
                         </div>
                         <div className="tabs__panes">
                             <div className="tabs__pane">
-                                Portfölj
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="sidebar">
-                    Sidebar
+
                 </div>
             </div>
-        </main>
-    )
+        </main> : <Login />
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
     return {
-
+        account: state.account
     }
 }
 

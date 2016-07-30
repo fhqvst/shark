@@ -10,4 +10,13 @@
   padding: $small-spacing $medium-spacing;
   transition: .25s;
   position: relative;
+
+  &:active {
+    transform: scale(.95);
+  }
+
+  &:hover {
+    background: lighten($blue, 5);
+  }
+
 }

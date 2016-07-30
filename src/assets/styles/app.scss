@@ -1,3 +1,6 @@
+$fa-font-path: '../../../node_modules/font-awesome/fonts/';
+@import 'font-awesome/scss/font-awesome.scss';
+
 @import 'base/settings',
         'base/reset',
         'base/fonts',
@@ -10,4 +13,5 @@
         'blocks/tabs',
         'blocks/metadata',
         'blocks/sidebar',
+        'blocks/login',
         'blocks/main';
