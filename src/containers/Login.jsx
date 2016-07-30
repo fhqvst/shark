@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { login } from '../actions/account';
 
-export default class Login extends Component {
+class Login extends Component {
 
     render() {
         return (
-            <form className="login">
+            <form onSubmit={this.props.handleOnSubmit} className="login">
                 <div className="login__content">
                     <h1 className="login__logo">Shark</h1>
                     <p>
@@ -27,4 +28,17 @@ export default class Login extends Component {
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    handleOnSubmit: event => {
+        event.preventDefault()
+        dispatch(login({
+            username: event.target.querySelector('#username').value,
+            password: event.target.querySelector('#password').value
+        }));
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);

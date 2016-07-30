@@ -1,12 +1,34 @@
 import {
-    AUTHENTICATED, LOGOUT
+    LOGIN, LOGOUT
 } from '../constants';
 
-export default function auth(state = {
+export default function account(state = {
     securityToken: '',
     authenticationSession: '',
     subscriptionId: '',
     authenticated: false
 }, action) {
-    return state
+
+    switch(action.type) {
+        case LOGIN:
+            return {
+                securityToken: action.securityToken,
+                authenticationSession: action.authenticationSession,
+                subscriptionId: action.subscriptionId,
+                authenticated: action.authenticated
+            }
+
+        case LOGOUT: {
+            return {
+                securityToken: '',
+                authenticationSession: '',
+                subscriptionId: '',
+                authenticated: false
+            }
+        }
+
+        default:
+            return state
+
+    }
 }
