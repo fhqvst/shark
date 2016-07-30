@@ -1,0 +1,31 @@
+body {
+  font-family: $font-family;
+  line-height: $base-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include title;
+  line-height: $heading-line-height;
+  margin: 0 0 $small-spacing;
+}
+
+p {
+  margin: 0 0 $small-spacing;
+}
+
+a {
+  text-decoration: none;
+  transition: .25s;
+  color: $orange;
+}
+
+hr {
+  border: 0;
+  border-bottom: .1rem solid $black;
+  margin: $medium-spacing 0;
+}

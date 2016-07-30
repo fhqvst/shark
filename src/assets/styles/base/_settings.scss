@@ -1,0 +1,49 @@
+// Colors
+$white: #FFFFFF;
+$black: #000000;
+$off-white: #EEEEEE;
+$off-black: #333333;
+$ghost-black: rgba($black, .1);
+$ghost-white: rgba($white, .1);
+$orange: #eb782d;
+$gray: #999999;
+$dark-gray: #555555;
+$blue: #1e99a8;
+$light-blue: #ddedf2;
+
+// Breakpoints
+$tiny: max-width 480px;
+$small: max-width 768px;
+$medium: max-width 1024px;
+$large: max-width 1280px;
+$huge: min-width 1440px;
+
+// Typography
+$font-family: Raleway, Montserrat, Century Gothic, Helvetica, Arial, sans-serif;
+
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+@mixin title {
+  font-family: $font-family;
+  font-style: italic;
+  font-weight: $light;
+
+  span {
+    font-weight: $bold;
+  }
+}
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.25;
+
+// Other sizes
+$border-radius: .5rem;
+
+$tiny-spacing: .5rem;
+$small-spacing: 1rem;
+$medium-spacing: 2rem;
+$large-spacing: 4rem;
+$huge-spacing: 6rem;
