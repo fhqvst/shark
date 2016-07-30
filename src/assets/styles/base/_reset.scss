@@ -15,6 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -151,6 +152,7 @@ select,
 textarea {
   color: inherit;
   font: inherit;
+  letter-spacing: .05em;
 }
 
 button {

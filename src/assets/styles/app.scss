@@ -3,7 +3,11 @@
         'base/fonts',
         'base/typography';
 
-@import 'blocks/titlebar',
+@import 'blocks/button',
+        'blocks/titlebar',
         'blocks/header',
         'blocks/search',
-        'blocks/metadata';
+        'blocks/tabs',
+        'blocks/metadata',
+        'blocks/sidebar',
+        'blocks/main';

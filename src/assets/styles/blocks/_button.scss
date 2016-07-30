@@ -1,0 +1,13 @@
+.button {
+  background: $blue;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: .1em;
+  font-size: 1.2rem;
+  padding: $small-spacing $medium-spacing;
+  transition: .25s;
+  position: relative;
+}

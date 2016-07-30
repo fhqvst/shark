@@ -1,0 +1,9 @@
+.sidebar {
+  background: $off-black;
+  width: $sidebar-width;
+  position: fixed;
+  top: 10rem + $titlebar-height + .1rem;
+  right: 0;
+  bottom: 0;
+  border-left: .1rem solid $ghost-white;
+}

@@ -1,0 +1,35 @@
+.tabs__buttons {
+  background: $ghost-black;
+  border-bottom: .1rem solid $ghost-white;
+  padding: $small-spacing 0 0;
+}
+
+.tabs__button {
+  background: transparent;
+  border-radius: 0;
+  color: rgba($white, .5);
+
+  &:hover {
+    color: $white;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: $medium-spacing;
+    right: $medium-spacing;
+    height: .2rem;
+    background: transparent;
+  }
+
+}
+
+.tabs__button.is-active {
+  color: $white;
+
+  &:after {
+    background: $blue;
+  }
+
+}

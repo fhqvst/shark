@@ -35,15 +35,30 @@ $bold: 700;
   }
 }
 
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
 // Line height
 $base-line-height: 1.5;
 $heading-line-height: 1.25;
 
 // Other sizes
-$border-radius: .5rem;
+$border-radius: .25rem;
 
 $tiny-spacing: .5rem;
 $small-spacing: 1rem;
 $medium-spacing: 2rem;
 $large-spacing: 4rem;
 $huge-spacing: 6rem;
+
+$titlebar-height: 2.2rem;
+$sidebar-width: 30rem;
