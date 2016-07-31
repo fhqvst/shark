@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login';
 import { connect } from 'react-redux'
+import Notifications from './Notifications';
 
 const Shark = ({ account }) => {
     return account.authenticated ?
@@ -10,7 +11,9 @@ const Shark = ({ account }) => {
                 <div className="search">
                     <input type="search" className="search__input" placeholder="Search..." />
                 </div>
-                <div className="meta"></div>
+                <div className="meta">
+
+                </div>
             </header>
             <div className="content">
                 <div className="main">
@@ -27,7 +30,7 @@ const Shark = ({ account }) => {
                     </div>
                 </div>
                 <div className="sidebar">
-
+                    <Notifications />
                 </div>
             </div>
         </main> : <Login />

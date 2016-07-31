@@ -1,0 +1,29 @@
+.notifications {
+  padding: $small-spacing;
+}
+
+.notifications__item {
+  background: $ghost-white;
+  padding: $small-spacing;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  border-left: .3rem solid $ghost-white;
+}
+
+.notifications__text {
+  font-size: 1rem;
+
+  span {
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    margin-bottom: $tiny-spacing
+  }
+
+  p {
+    color: rgba($white, .5);
+    margin: 0;
+  }
+
+}

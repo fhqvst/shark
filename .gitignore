@@ -2,3 +2,5 @@ dist
 node_modules
 .env
 .idea
+.DS_Store
+Shark-darwin-x64
