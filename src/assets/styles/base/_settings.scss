@@ -21,21 +21,11 @@ $large: max-width 1280px;
 $huge: min-width 1440px;
 
 // Typography
-$font-family: Raleway, Montserrat, Century Gothic, Helvetica, Arial, sans-serif;
+$font-family: Yantramanav, Raleway, Montserrat Century Gothic, Helvetica, Arial, sans-serif;
 
 $light: 300;
 $regular: 400;
 $bold: 700;
-
-@mixin title {
-  font-family: $font-family;
-  font-style: italic;
-  font-weight: $light;
-
-  span {
-    font-weight: $bold;
-  }
-}
 
 @mixin clearfix {
   &:before,

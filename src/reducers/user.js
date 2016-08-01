@@ -1,5 +1,5 @@
 import {
-    LOGIN, LOGOUT
+    LOGIN, LOGOUT, METADATA
 } from '../constants';
 import { REHYDRATE } from 'redux-persist/constants';
 
@@ -8,7 +8,8 @@ export default function user(state = {
     authenticationSession: '',
     subscriptionId: '',
     authenticated: false,
-    timestamp: false
+    timestamp: false,
+    metadata: {}
 }, action) {
 
     switch(action.type) {
@@ -29,6 +30,13 @@ export default function user(state = {
                 authenticated: false,
                 timestamp: null
             }
+        }
+
+        case METADATA: {
+            return Object.assign({}, state, {
+                metadata: action.metadata
+            })
+            
         }
 
         default:

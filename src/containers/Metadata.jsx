@@ -11,9 +11,20 @@ class Metadata extends Component {
     }
 
     render() {
-        return this.props.user.totalBalance ?
+        return this.props.user.metadata.totalBalance ?
             <div className="metadata">
-                <Value className="metadata__value" value={this.props.user.totalBalance} unit="SEK" colorize={true} />
+                <div className="metadata__item">
+                    <span className="metadata__title">Total Balance</span>
+                    <Value className="metadata__value" value={this.props.user.metadata.totalBalance} unit="SEK" colorize={true} />
+                </div>
+                <div className="metadata__item">
+                    <span className="metadata__title">Total Capital</span>
+                    <Value className="metadata__value" value={this.props.user.metadata.totalOwnCapital} unit="SEK" colorize={true} />
+                </div>
+                <div className="metadata__item">
+                    <span className="metadata__title">Performance</span>
+                    <Value className="metadata__value" value={this.props.user.metadata.totalPerformance} unit="SEK" colorize={true} />
+                </div>
             </div> : false
     }
 

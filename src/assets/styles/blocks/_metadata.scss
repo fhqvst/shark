@@ -1,0 +1,17 @@
+.metadata {
+  display: flex;
+}
+
+.metadata__item {
+  margin-left: $large-spacing;
+}
+
+.metadata__title {
+  @include title;
+  display: block;
+  font-size: 1rem;
+}
+
+.metadata__value {
+  font-size: 2rem;
+}
