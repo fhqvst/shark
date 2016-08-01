@@ -10,7 +10,7 @@ class Metadata extends Component {
     }
 
     render() {
-        return this.props.user.metadata.totalBalance ?
+        return this.props.user.metadata ?
             <div className="metadata">
                 <div className="metadata__item">
                     <span className="metadata__title">Total Balance</span>

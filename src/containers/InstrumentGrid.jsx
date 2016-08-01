@@ -10,14 +10,12 @@ class InstrumentGrid extends Component {
         // this.props.dispatch(getPortfolio())
     }
 
-
-
     render() {
         return this.props.instruments ?
 
             <div className="instruments__grid">
                 { this.props.instruments.map(instrument => (
-                    <div className="instruments__item" key={'instrumentGrid' + instrument.id} onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)}>
+                    <div className="instruments__item" key={'instrumentGrid' + instrument._id} onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)}>
                         <Instrument instrument={instrument} />
                     </div>
                 ))}
@@ -35,7 +33,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnDoubleClick(instrument) {
         dispatch(openFocusTab(instrument.id));
-    }
+    },
+    dispatch
 });
 
 export default connect(

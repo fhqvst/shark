@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
+import localforage from 'localforage';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger'
 import Shark from './containers/Shark';
@@ -27,7 +28,9 @@ class AppProvider extends Component {
     }
 
     componentWillMount(){
-        persistStore(store, {}, () => {
+        persistStore(store, {
+            storage: localforage,
+        }, () => {
 
             avanza.authenticationSession = store.getState().user.authenticationSession
             avanza.subscriptionId = store.getState().user.subscriptionId
