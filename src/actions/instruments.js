@@ -14,7 +14,7 @@ export function addInstrument(id) {
             queue.add(() => avanza.getStock(id))
             .then(instrument => {
                 dispatch(addedInstrument(instrument));
-            })
+            }).catch(e => console.error(e))
         }
     }
 }

@@ -1,12 +1,14 @@
 import {
     LOGIN, LOGOUT
 } from '../constants';
+import { REHYDRATE } from 'redux-persist/constants';
 
-export default function account(state = {
+export default function user(state = {
     securityToken: '',
     authenticationSession: '',
     subscriptionId: '',
-    authenticated: false
+    authenticated: false,
+    timestamp: false
 }, action) {
 
     switch(action.type) {
@@ -15,7 +17,8 @@ export default function account(state = {
                 securityToken: action.securityToken,
                 authenticationSession: action.authenticationSession,
                 subscriptionId: action.subscriptionId,
-                authenticated: action.authenticated
+                authenticated: action.authenticated,
+                timestamp: action.timestamp
             }
 
         case LOGOUT: {
@@ -23,7 +26,8 @@ export default function account(state = {
                 securityToken: '',
                 authenticationSession: '',
                 subscriptionId: '',
-                authenticated: false
+                authenticated: false,
+                timestamp: null
             }
         }
 

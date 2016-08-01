@@ -1,8 +1,10 @@
 // Authentication
 export const LOGIN  = 'LOGIN';
 export const LOGOUT  = 'LOGOUT';
+export const INVALID_SESSION = 'INVALID_SESSION';
 export const UPDATE_SECURITY_TOKEN = 'UPDATE_SECURITY_TOKEN';
 export const UPDATE_AUTHENTICATION_SESSION = 'UPDATE_AUTHENTICATION_SESSION';
+export const METADATA = 'METADATA';
 
 // Positions and portfolio
 export const REQUEST_POSITIONS  = 'REQUEST_POSITIONS';
@@ -28,13 +30,6 @@ export const ORDERBOOK_SELLER = 'ORDERBOOK_SELLER';
 export const TARGET_REACHED = 'TARGET_REACHED';
 export const PRICE_DECREASE = 'PRICE_DECREASE';
 
-// Persistence
-export const REHYDRATE = 'persist/REHYDRATE';
-
-// Modals
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
-
 // Notifiers
 export const TOGGLE_NOTIFIER = 'TOGGLE_NOTIFIER';
 
@@ -42,3 +37,22 @@ export const TOGGLE_NOTIFIER = 'TOGGLE_NOTIFIER';
 export const CREATE_TARGET = 'CREATE_TARGET';
 export const DELETE_TARGET = 'DELETE_TARGET';
 export const UPDATE_TARGET = 'UPDATE_TARGET';
+
+// Search
+export const SEARCH = 'SEARCH';
+export const SEARCHED = 'SEARCHED';
+
+// Avanza
+export const STOCK = 'STOCK'
+export const FUND = 'FUND'
+export const BOND = 'BOND'
+export const OPTION = 'OPTION'
+export const FUTURE_FORWARD = 'FUTURE_FORWARD'
+export const CERTIFICATE = 'CERTIFICATE'
+export const WARRANT = 'WARRANT'
+export const ETF = 'EXCHANGE_TRADED_FUND'
+export const INDEX = 'INDEX';
+export const PREMIUM_BOND = 'PREMIUM_BOND'
+export const SUBSCRIPTION_OPTION = 'SUBSCRIPTION_OPTION'
+export const EQUITY_LINKED_BOND = 'EQUITY_LINKED_BOND';
+export const CONVERTIBLE = 'CONVERTIBLE';

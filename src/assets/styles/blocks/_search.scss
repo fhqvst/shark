@@ -1,6 +1,6 @@
 .search {
   position: relative;
-  &:after {
+  &:before {
     @include fa-icon;
     position: absolute;
     top: 50%;
@@ -11,6 +11,28 @@
   }
 }
 
+.search.is-loading {
+  &:after {
+    @include fa-icon;
+    position: absolute;
+    top: 50%;
+    right: $medium-spacing;
+    transform: translateY(-50%);
+    content: '\f110';
+    color: rgba($white, .5);
+    animation: searchIsLoading .5s infinite linear;
+  }
+}
+
+@keyframes searchIsLoading {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
 .search__input {
   background: $ghost-white;
   border: none;
@@ -18,4 +40,45 @@
   padding: $small-spacing $medium-spacing $small-spacing 4rem;
   outline: none;
   width: 30rem;
+}
+
+.search__input:focus + .search__results {
+  display: block;
+}
+
+.search__results {
+  display: none;
+  background: $off-black;
+  border: .1rem solid $ghost-white;
+  border-top: none;
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  right: 2rem;
+  transform: translateY(100%);
+  z-index: 20;
+}
+
+.search__instruments {
+}
+
+.search__instrument {
+  border-bottom: .1rem solid $ghost-white;
+}
+
+.search__link {
+  padding: $small-spacing;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  transition: .25s;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background: $ghost-white;
+    cursor: pointer;
+  }
+
 }
