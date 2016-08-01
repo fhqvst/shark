@@ -14,6 +14,16 @@ export default class Chart extends Component {
     componentDidMount() {
 
         const defaults = {
+            chart: {
+                spacingBottom: 0,
+                spacingTop: 0,
+                spacingLeft: 0,
+                spacingRight: 0,
+            },
+            labels: {
+                align: 'right',
+                x: 0
+            },
             title: false,
             yAxis: {
                 title: false,
