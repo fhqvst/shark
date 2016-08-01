@@ -22,6 +22,7 @@
   "homepage": "https://github.com/fhqvst/shark#readme",
   "description": "A trading terminal from the future.",
   "dependencies": {
+    "avanza": "0.0.4",
     "font-awesome": "^4.6.3",
     "localforage": "^1.4.2",
     "lodash": "^4.14.1",

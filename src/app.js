@@ -1,53 +1,54 @@
-import * as React from 'react'
-import {render} from 'react-dom'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
-import Shark from './containers/Shark'
-import localForage from 'localforage'
-import reducers from './reducers';
-import Avanza from 'avanza';
-import Queue from 'promise-queue';
-import {REHYDRATE} from 'redux-persist/constants'
-import createActionBuffer from 'redux-action-buffer'
-import { logout } from './actions/user';
+import React, { Component } from 'react'
+import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
-import { getStoredState, persistStore, autoRehydrate } from 'redux-persist'
+import { Provider } from 'react-redux'
+import { persistStore, autoRehydrate } from 'redux-persist'
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger'
+import Shark from './containers/Shark';
+import reducer from './reducers'
+import Avanza from 'avanza'
+import Queue from 'promise-queue'
 
 const avanza = new Avanza();
 const queue = new Queue();
-const INITIALIZE = 'INITIALIZE'
 
-const store = createStore(reducers,
+const store = createStore(reducer,
     applyMiddleware(
         thunk.withExtraArgument({avanza, queue}),
-        createLogger(),
-        createActionBuffer(REHYDRATE)
+        createLogger()
     ), autoRehydrate())
 
-const persistor = persistStore(store, {
-    storage: localForage,
-    // blacklist: ['search']
-}, () => {
+class AppProvider extends Component {
 
-    console.log(store.getState());
-
-    avanza.authenticationSession = store.getState().user.authenticationSession
-    avanza.subscriptionId = store.getState().user.subscriptionId
-    avanza.securityToken = store.getState().user.securityToken
-
-    const timestamp = store.getState().user.timestamp;
-    if(!timestamp || (Date.now() - timestamp > 86400)) {
-        // store.dispatch(logout());
-        console.log("LOGGED OUT");
+    constructor() {
+        super()
+        this.state = { rehydrated: false }
     }
 
-    store.dispatch({
-        type: INITIALIZE
-    });
-})
+    componentWillMount(){
+        persistStore(store, {}, () => {
+
+            avanza.authenticationSession = store.getState().user.authenticationSession
+            avanza.subscriptionId = store.getState().user.subscriptionId
+            avanza.securityToken = store.getState().user.securityToken
+
+            this.setState({ rehydrated: true })
+
+        })
+    }
+
+    render() {
+        if(!this.state.rehydrated){
+            return false
+        }
+        return (
+            <Provider store={store}>
+                <Shark />
+            </Provider>
+        )
+    }
+}
 
 render(
-    <Provider store={store}>
-        <Shark />
-    </Provider>, document.getElementById('Shark'))
+    <AppProvider />, document.getElementById('Shark'))

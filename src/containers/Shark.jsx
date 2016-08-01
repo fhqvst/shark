@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { logout } from '../actions/user';
 import Login from './Login';
 import Search from './Search';
 import Metadata from './Metadata';
@@ -8,18 +7,7 @@ import Notifications from './Notifications';
 
 class Shark extends Component {
 
-    constructor() {
-        this.state = { rehydrated: false }
-    }
-
-    componentWillMount(){
-        persistStore(store, {}, () => {
-            this.setState({ rehydrated: true })
-        })
-    }
-
     render() {
-        if(!this.store.rehy)
         return this.props.user.authenticated ?
             <main>
                 <div className="titlebar"></div>
