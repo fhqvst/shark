@@ -10,7 +10,7 @@ export function addedInstrument(instrument) {
 
 export function addInstrument(id) {
     return (dispatch, getState, {avanza, queue}) => {
-        if(_.find(getState().instruments, instrument => instrument.id === id)) {
+        if(!_.find(getState().instruments, instrument => instrument.id === id)) {
             queue.add(() => avanza.getStock(id))
             .then(instrument => {
                 dispatch(addedInstrument(instrument));

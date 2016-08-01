@@ -5,3 +5,7 @@
 .highcharts-grid path {
   stroke: $ghost-white;
 }
+
+.highcharts-series path:first-child {
+  stroke: $blue;
+}

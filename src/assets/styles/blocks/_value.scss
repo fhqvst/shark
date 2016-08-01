@@ -1,6 +1,11 @@
 .value {
   display: inline-block;
   line-height: 1;
+
+  &:hover {
+    cursor: default;
+  }
+
 }
 
 .value.is-positive {

@@ -25,3 +25,14 @@
   font-size: 1rem;
   padding: $tiny-spacing $small-spacing;
 }
+
+.button__remove {
+  color: rgba($white, .5);
+  &:after {
+    @include fa-icon;
+    content: $fa-var-times;
+  }
+  &:hover {
+    color: $white;
+  }
+}

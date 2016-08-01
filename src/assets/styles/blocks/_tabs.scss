@@ -4,6 +4,11 @@
   padding: $small-spacing 0 0;
 }
 
+.tabs__buttons.is-grouped {
+  display: flex;
+  justify-content: space-between;
+}
+
 .tabs__button {
   background: transparent;
   border-radius: 0;
@@ -37,4 +42,11 @@
     background: $blue;
   }
 
+}
+
+.tabs__pane {
+  display: none;
+}
+.tabs__pane.is-active {
+  display: block;
 }

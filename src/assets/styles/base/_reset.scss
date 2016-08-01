@@ -219,7 +219,9 @@ optgroup {
 
 * {
   tap-highlight-color: rgba(0,0,0,0);
+  user-select: none;
 }
-*:not(.button):not(input) {
+
+body {
   cursor: default;
 }

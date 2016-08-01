@@ -15,10 +15,11 @@ export default class Chart extends Component {
 
         const defaults = {
             chart: {
-                spacingBottom: 0,
-                spacingTop: 0,
+                spacingBottom: 10,
+                spacingTop: 10,
                 spacingLeft: 0,
                 spacingRight: 0,
+                height: 240,
             },
             labels: {
                 align: 'right',
@@ -48,7 +49,8 @@ export default class Chart extends Component {
                         hover: {
                             enabled: false
                         }
-                    }
+                    },
+                    animation: false,
                 },
                 line: {
                     marker: {
@@ -106,13 +108,15 @@ export default class Chart extends Component {
 
                 hasDragged = Math.abs(downYPixels - dragYPixels);
 
-                if (hasDragged > 10) {
+                if (hasDragged > 2) {
 
                     newMinY = yMin - (dragYValue - downYValue);
                     newMaxY = yMax - (dragYValue - downYValue);
 
-                    if(newMinY > -10) {
+                    if(newMinY > 0) {
                         yAxis.setExtremes(newMinY, newMaxY, true, false);
+                    } else {
+                        yAxis.setExtremes(0, yExtremes.max, true, false);
                     }
 
                 }
