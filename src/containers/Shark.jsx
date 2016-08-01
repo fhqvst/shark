@@ -8,9 +8,6 @@ import InstrumentGrid from './InstrumentGrid';
 import _ from 'lodash'
 
 import Tabs from '../components/Tabs';
-import TabsButtons from '../components/TabsButtons';
-import TabsButton from '../components/TabsButton';
-import TabsGroup from '../components/TabsGroup';
 import TabsPane from '../components/TabsPane';
 
 class Shark extends Component {
@@ -27,29 +24,20 @@ class Shark extends Component {
                 <div className="content">
                     <div className="main">
                         <Tabs>
-                            <TabsButtons grouped={true}>
-                                <TabsGroup>
-                                    <TabsButton>Portfolio</TabsButton>
-                                    <TabsButton>Watchlist</TabsButton>
-                                </TabsGroup>
-                                <TabsGroup>
-                                    { this.props.focuses ? this.props.focuses.map((id, i) => {
-
-                                        const instrument = _.find(this.props.instruments, instrument => instrument.id === id);
-
-                                        if(instrument) {
-                                            return <TabsButton key={"tabsButtons" + i}>{instrument.name}</TabsButton>
-                                        }
-
-                                    }) : false }
-                                </TabsGroup>
-                            </TabsButtons>
-                            <TabsPane>
+                            <TabsPane label="Portfolio">
                                 <InstrumentGrid instruments={this.props.instruments} />
                             </TabsPane>
-                            <TabsPane>
+                            <TabsPane label="Watchlist">
                                 DERP
                             </TabsPane>
+                            { this.props.focuses ? this.props.focuses.map((id, i) => {
+
+                                const instrument = _.find(this.props.instruments, instrument => instrument._id === id);
+                                if(instrument) {
+                                    return <TabsPane key={"tabsPanes" + i} label={instrument._name} focus={true}>{instrument._lastPrice}</TabsPane>
+                                }
+
+                            }) : false }
                         </Tabs>
                     </div>
                     <div className="sidebar">

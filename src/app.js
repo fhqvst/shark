@@ -29,7 +29,7 @@ class AppProvider extends Component {
 
     componentWillMount(){
         persistStore(store, {
-            storage: localforage,
+            // storage: localforage,
         }, () => {
 
             avanza.authenticationSession = store.getState().user.authenticationSession

@@ -2,9 +2,6 @@
   background: $ghost-black;
   border-bottom: .1rem solid $ghost-white;
   padding: $small-spacing 0 0;
-}
-
-.tabs__buttons.is-grouped {
   display: flex;
   justify-content: space-between;
 }
@@ -42,11 +39,4 @@
     background: $blue;
   }
 
-}
-
-.tabs__pane {
-  display: none;
-}
-.tabs__pane.is-active {
-  display: block;
 }

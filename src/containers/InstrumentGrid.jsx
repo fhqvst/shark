@@ -32,7 +32,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnDoubleClick(instrument) {
-        dispatch(openFocusTab(instrument.id));
+        dispatch(openFocusTab(instrument._id));
     },
     dispatch
 });
