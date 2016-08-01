@@ -1,3 +1,9 @@
 .main {
   padding-right: $sidebar-width;
+  @include clearfix;
+}
+
+.content {
+  position: relative;
+  @include clearfix;
 }

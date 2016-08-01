@@ -40,3 +40,7 @@
   }
 
 }
+
+.tabs__pane {
+  @include clearfix;
+}

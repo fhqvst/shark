@@ -44,7 +44,7 @@ export default class Tabs extends Component {
     }
 
     renderContent() {
-        return this.props.children[this.state.active]
+        return Children.toArray(this.props.children)[this.state.active]
     }
 
     render() {

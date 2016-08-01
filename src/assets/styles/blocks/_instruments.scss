@@ -1,5 +1,6 @@
 .instruments__grid {
   padding: 0 $medium-spacing;
+  @include clearfix;
 }
 
 div.instruments__item {

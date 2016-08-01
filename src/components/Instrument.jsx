@@ -10,22 +10,22 @@ export default class Instrument extends Component {
         const { instrument } = this.props;
         const config = {
             series: [{
-                data: instrument ? [instrument.lastPrice, instrument.lastPrice] : []
+                data: instrument ? [instrument._lastPrice, instrument._lastPrice] : []
             }]
         };
 
         return instrument ?
             <div className="instrument">
                 <div className="instrument__top">
-                    <span className="instrument__name">{instrument.name}</span>
+                    <span className="instrument__name">{instrument._name}</span>
                     <span className="instrument__price">
-                        <Value value={instrument.lastPrice} unit={instrument.currency} colorize={false} />
+                        <Value value={instrument._lastPrice} unit={instrument.currency} colorize={false} />
                     </span>
                 </div>
                 <div className="instrument__top">
-                    <span className="instrument__date">{ new Date(instrument.lastPriceUpdated).toLocaleTimeString() }</span>
+                    <span className="instrument__date">{ new Date(instrument._lastPriceUpdated).toLocaleTimeString() }</span>
                     <span className="instrument__change">
-                        <Value value={instrument.changePercent} unit="%" />
+                        <Value value={instrument._changePercent} unit="%" />
                     </span>
                 </div>
                 <Chart config={config} />
