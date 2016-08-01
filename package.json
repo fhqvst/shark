@@ -24,6 +24,7 @@
   "dependencies": {
     "avanza": "0.0.4",
     "font-awesome": "^4.6.3",
+    "highcharts": "^4.2.5",
     "localforage": "^1.4.2",
     "lodash": "^4.14.1",
     "promise-queue": "^2.2.3",

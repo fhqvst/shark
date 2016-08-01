@@ -4,6 +4,7 @@ import Login from './Login';
 import Search from './Search';
 import Metadata from './Metadata';
 import Notifications from './Notifications';
+import InstrumentGrid from './InstrumentGrid';
 
 class Shark extends Component {
 
@@ -24,7 +25,7 @@ class Shark extends Component {
                             </div>
                             <div className="tabs__panes">
                                 <div className="tabs__pane">
-
+                                    <InstrumentGrid />
                                 </div>
                             </div>
                         </div>
