@@ -1,0 +1,8 @@
+.focus__wrapper {
+  padding: $medium-spacing;
+}
+
+.focus__title {
+  @include title;
+  font-size: 2.4rem;
+}

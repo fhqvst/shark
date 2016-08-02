@@ -7,3 +7,11 @@
   position: relative;
   @include clearfix;
 }
+
+html, body, #Shark, main, .main {
+  height: 100%;
+}
+
+.content {
+  height: calc(100% - 10rem - 2.2rem);
+}

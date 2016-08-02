@@ -7,6 +7,7 @@ import Notifications from './Notifications';
 import InstrumentGrid from './InstrumentGrid';
 import _ from 'lodash'
 
+import Focus from './Focus';
 import Tabs from '../components/Tabs';
 import TabsPane from '../components/TabsPane';
 
@@ -34,7 +35,9 @@ class Shark extends Component {
 
                                 const instrument = _.find(this.props.instruments, instrument => instrument._id === id);
                                 if(instrument) {
-                                    return <TabsPane key={"tabsPanes" + i} label={instrument._name} focus={true}>{instrument._lastPrice}</TabsPane>
+                                    return <TabsPane key={"tabsPanes" + i} label={instrument._name} focus={true}>
+                                        <Focus instrument={instrument} />
+                                    </TabsPane>
                                 }
 
                             }) : false }

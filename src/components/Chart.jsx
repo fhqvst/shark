@@ -28,10 +28,11 @@ export default class Chart extends Component {
             title: false,
             yAxis: {
                 title: false,
-                min: 0,
-                max: 2 * this.props.config.series[0].data[0],
+                min: this.props.config.series[0].data[0] / 3,
+                max: 1.5 * this.props.config.series[0].data[0],
                 endOnTick: false,
-                startOnTick: false
+                startOnTick: false,
+                tickPixelInterval: 26
             },
             xAxis: {
                 visible: false

@@ -1,3 +1,7 @@
+.tabs {
+  height: 100%;
+}
+
 .tabs__buttons {
   background: $ghost-black;
   border-bottom: .1rem solid $ghost-white;
@@ -10,6 +14,7 @@
   background: transparent;
   border-radius: 0;
   color: rgba($white, .5);
+  height: 4rem;
 
   &:hover {
     color: $white;
@@ -43,4 +48,6 @@
 
 .tabs__pane {
   @include clearfix;
+  max-height: calc(100% - 5.1rem);
+  overflow: auto;
 }
