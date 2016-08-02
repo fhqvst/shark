@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { search } from '../actions/search';
+import { openFocusTab, addFocusTab } from '../actions/focus';
 import _ from 'lodash';
 
 class Search extends Component {
@@ -14,7 +15,7 @@ class Search extends Component {
                         <ul key={'searchInstruments' + type} className="search__instruments">
                             { _.map(instruments, instrument => (
                                 <li key={'searchInstrument' + instrument.id} className="search__instrument">
-                                    <button className="search__link">{instrument.name}</button>
+                                    <button className="search__link" onClick={this.props.handleOnClick.bind(this, instrument.id)}>{instrument.name}</button>
                                 </li>
                             )) }
                         </ul>
@@ -27,17 +28,31 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => ({
-    search: state.search
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleOnChange: event => {
-        event.preventDefault()
-        dispatch(search(event.target.value));
-    }
+    search: state.search,
+    focuses: state.focuses.instruments
 });
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    null,
+    (stateProps, dispatchProps, ownProps) => {
+
+        let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
+
+        newProps.handleOnChange = event => {
+            event.preventDefault()
+            dispatchProps.dispatch(search(event.target.value));
+        }
+
+        newProps.handleOnClick = (id, event) => {
+            event.preventDefault()
+            if(_.find(newProps.focuses, focus => focus === id)) {
+                dispatchProps.dispatch(openFocusTab(id));
+            } else {
+                dispatchProps.dispatch(addFocusTab(id));
+            }
+        }
+
+        return newProps;
+    }
 )(Search);

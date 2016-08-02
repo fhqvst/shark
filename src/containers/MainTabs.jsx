@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {closeFocusTab} from '../actions/focus';
+import {openFocusTab,closeFocusTab} from '../actions/focus';
 import InstrumentGrid from './InstrumentGrid';
 import _ from 'lodash'
 
@@ -20,9 +20,11 @@ class MainTabs extends Component {
     componentWillReceiveProps(props) {
         const active = props.active;
         const instrument = _.findIndex(props.focuses, focus => focus === active)
-        this.setState({
-            active: 2 + instrument
-        })
+        if(instrument > -1) {
+            this.setState({
+                active: 2 + instrument
+            })
+        }
     }
 
     handleOnCloseTab(index, event) {
@@ -36,6 +38,7 @@ class MainTabs extends Component {
         this.setState({
             active: index
         })
+        this.props.dispatch(openFocusTab(0));
     }
 
     render() {
@@ -75,7 +78,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnCloseTab(instrumentId) {
         dispatch(closeFocusTab(instrumentId))
-    }
+    },
+    dispatch
 });
     
 export default connect(

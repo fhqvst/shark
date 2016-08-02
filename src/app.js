@@ -38,7 +38,7 @@ class AppProvider extends Component {
 
             this.setState({ rehydrated: true })
 
-        })
+        }).purge(['focuses'])
     }
 
     render() {

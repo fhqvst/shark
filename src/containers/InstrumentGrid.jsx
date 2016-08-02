@@ -28,23 +28,25 @@ class InstrumentGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-    positions: state.positions,
-    focuses: state.focuses.instruments
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleOnDoubleClick(instrument) {
-        if(_.find(ownProps.focuses, focus => focus === instrument._id)) {
-            dispatch(openFocusTab(instrument._id));
-        } else {
-            dispatch(addFocusTab(instrument._id));
-        }
-
-    },
-    dispatch
+    focuses: state.focuses.instruments,
+    instruments: state.instruments
 });
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    null,
+    (stateProps, dispatchProps, ownProps) => {
+
+        let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
+
+        newProps.handleOnDoubleClick = instrument => {
+            if(_.find(newProps.focuses, focus => focus === instrument._id)) {
+                dispatchProps.dispatch(openFocusTab(instrument._id));
+            } else {
+                dispatchProps.dispatch(addFocusTab(instrument._id));
+            }
+        }
+
+        return newProps;
+    }
 )(InstrumentGrid);

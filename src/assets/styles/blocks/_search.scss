@@ -42,7 +42,8 @@
   width: 30rem;
 }
 
-.search__input:focus + .search__results {
+.search__input:focus + .search__results,
+.search__results:active {
   display: block;
 }
 
@@ -64,6 +65,7 @@
 
 .search__instrument {
   border-bottom: .1rem solid $ghost-white;
+  outline: none;
 }
 
 .search__link {
