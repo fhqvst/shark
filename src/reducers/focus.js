@@ -5,6 +5,7 @@ export default function(state = [], action) {
 
     switch (action.type) {
 
+        // todo: Add some behaviour which separates ADDing and OPENing tabs.
         case OPEN_FOCUS_TAB:
             return [
                 ...state,
