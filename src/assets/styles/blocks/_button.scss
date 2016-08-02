@@ -26,8 +26,9 @@
   padding: $tiny-spacing $small-spacing;
 }
 
-.button__remove {
+.button__close {
   color: rgba($white, .5);
+  margin-left: $small-spacing;
   &:after {
     @include fa-icon;
     content: $fa-var-times;

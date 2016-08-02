@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPortfolio } from '../actions/positions';
-import { openFocusTab } from '../actions/focus';
+import { addFocusTab, openFocusTab } from '../actions/focus';
 import Instrument from '../components/Instrument';
+import _ from 'lodash'
 
 class InstrumentGrid extends Component {
 
@@ -27,12 +28,18 @@ class InstrumentGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-    positions: state.positions
+    positions: state.positions,
+    focuses: state.focuses.instruments
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnDoubleClick(instrument) {
-        dispatch(openFocusTab(instrument._id));
+        if(_.find(ownProps.focuses, focus => focus === instrument._id)) {
+            dispatch(openFocusTab(instrument._id));
+        } else {
+            dispatch(addFocusTab(instrument._id));
+        }
+
     },
     dispatch
 });

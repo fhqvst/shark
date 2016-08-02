@@ -26,7 +26,7 @@ function createWindow () {
     })
 
     try {
-        BrowserWindow.addDevToolsExtension('~/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0')
+        BrowserWindow.addDevToolsExtension('/Users/filiphallqvist/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/0.15.0_0')
     } catch(e) {}
 
 }

@@ -39,5 +39,6 @@ export const EQUITY_LINKED_BOND = 'EQUITY_LINKED_BOND';
 export const CONVERTIBLE = 'CONVERTIBLE';
 
 // Focus
+export const ADD_FOCUS_TAB = 'ADD_FOCUS_TAB';
 export const OPEN_FOCUS_TAB = 'OPEN_FOCUS_TAB'
 export const CLOSE_FOCUS_TAB = 'CLOSE_FOCUS_TAB'
