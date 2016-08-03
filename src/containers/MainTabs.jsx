@@ -70,6 +70,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     handleOnCloseTab: index => {
         dispatch(closeTab(index));
+        dispatch(openTab(index === 2 ? 0 : index - 1));
     }
 });
     
