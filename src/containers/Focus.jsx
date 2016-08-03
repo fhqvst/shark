@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from '../components/Loader';
+
 class Focus extends Component {
 
     componentDidMount() {
@@ -9,12 +11,10 @@ class Focus extends Component {
         return this.props.instrument ?
 
             <div className="focus__wrapper">
-                <h1 className="focus__title">
-                    { this.props.instrument._name }
-                </h1>
+                <Loader />
             </div>
 
-        : false
+        : <Loader />
     }
 
 }

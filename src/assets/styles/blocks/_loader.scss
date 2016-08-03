@@ -1,0 +1,35 @@
+.loader__wrapper {
+  height: 100%;
+  position: relative;
+  cursor: progress;
+}
+
+.loader__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:after {
+    @include fa-icon;
+    font-size: 4em;
+    animation: spin-to-win 1s linear infinite;
+    content: $fa-var-spinner;
+    text-shadow: 0 0 1rem rgba($white, .25);
+  }
+
+}
+
+@keyframes spin-to-win {
+  0% {
+    opacity: .5;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5;
+    transform: rotate(360deg);
+  }
+}
