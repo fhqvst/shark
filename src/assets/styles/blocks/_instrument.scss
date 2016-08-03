@@ -1,0 +1,20 @@
+.instrument__top {
+  display: flex;
+  justify-content: space-between;
+
+  &:nth-child(2) {
+    border-bottom: .1rem solid $ghost-white;
+  }
+
+}
+
+.instrument {
+  padding: $medium-spacing;
+  transition: .1s;
+  border-radius: $border-radius;
+
+  &:hover {
+    background: rgba($blue, .1);
+    cursor: pointer;
+  }
+}

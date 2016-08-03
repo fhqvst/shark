@@ -1,34 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPortfolio } from '../actions/positions';
 import { addFocusTab, openFocusTab } from '../actions/focus';
 import Instrument from '../components/Instrument';
+import Grid from '../components/Grid';
 import _ from 'lodash'
 
 class InstrumentGrid extends Component {
 
-    componentDidMount() {
-        this.props.dispatch(getPortfolio())
-    }
-
     render() {
         return this.props.positions ?
 
-            <div className="instruments__grid">
-                { this.props.positions.map(position => {
-                    const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
+            <Grid items={ this.props.positions.map(position => {
 
-                    if(instrument) {
-                        return <div className="instruments__item" key={'instrumentGrid' + instrument._id}
-                                    onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)}>
-                            <Instrument instrument={instrument}/>
-                        </div>
-                    }
+            const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
+            return instrument ?
+                <Instrument instrument={instrument} onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)} />
+            : false }
 
-                    return false;
-
-                })}
-            </div>
+            )} />
 
         : false
     }
@@ -36,7 +25,7 @@ class InstrumentGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-    focuses: state.focuses.instruments,
+    tabs: state.tabs,
     positions: state.positions,
     instruments: state.instruments
 });

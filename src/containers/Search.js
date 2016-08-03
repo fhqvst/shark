@@ -29,30 +29,32 @@ class Search extends Component {
 
 const mapStateToProps = state => ({
     search: state.search,
-    focuses: state.focuses.instruments
+    tabs: state.tabs.items
 });
 
-export default connect(
-    mapStateToProps,
-    null,
-    (stateProps, dispatchProps, ownProps) => {
+export default connect(mapStateToProps)(Search)
 
-        let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
-
-        newProps.handleOnChange = event => {
-            event.preventDefault()
-            dispatchProps.dispatch(search(event.target.value));
-        }
-
-        newProps.handleOnClick = (id, event) => {
-            event.preventDefault()
-            if(_.find(newProps.focuses, focus => focus === id)) {
-                dispatchProps.dispatch(openFocusTab(id));
-            } else {
-                dispatchProps.dispatch(addFocusTab(id));
-            }
-        }
-
-        return newProps;
-    }
-)(Search);
+// export default connect(
+//     mapStateToProps,
+//     null,
+//     (stateProps, dispatchProps, ownProps) => {
+//
+//         let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
+//
+//         newProps.handleOnChange = event => {
+//             event.preventDefault()
+//             dispatchProps.dispatch(search(event.target.value));
+//         }
+//
+//         newProps.handleOnClick = (id, event) => {
+//             event.preventDefault()
+//             if(_.find(newProps.focuses, focus => focus === id)) {
+//                 dispatchProps.dispatch(openFocusTab(id));
+//             } else {
+//                 dispatchProps.dispatch(addFocusTab(id));
+//             }
+//         }
+//
+//         return newProps;
+//     }
+// )(Search);

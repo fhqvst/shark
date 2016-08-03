@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {openFocusTab,closeFocusTab} from '../actions/focus';
+import {getPortfolio} from '../actions/positions';
 import InstrumentGrid from './InstrumentGrid';
 import _ from 'lodash'
 
@@ -10,55 +11,56 @@ import TabsPane from '../components/TabsPane';
 
 class MainTabs extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            active: 0
-        }
-    }
-
-    componentWillReceiveProps(props) {
-        const active = props.active;
-        const instrument = _.findIndex(props.focuses, focus => focus === active)
-        if(instrument > -1) {
-            this.setState({
-                active: 2 + instrument
-            })
-        }
+    componentDidMount() {
+        // this.props.dispatch(getPortfolio())
     }
 
     handleOnCloseTab(index, event) {
-        this.props.handleOnCloseTab(this.props.focuses[index - 2]);
-        this.setState({
-            active: index - 1
-        })
+        console.log("Closing", index);
     }
 
     handleOnChangeTab(index, event) {
-        this.setState({
-            active: index
-        })
-        this.props.dispatch(openFocusTab(0));
+        console.log("Changing", index);
     }
 
     render() {
         return (
-            <Tabs active={this.state.active} onCloseTab={this.handleOnCloseTab.bind(this)} onChangeTab={this.handleOnChangeTab.bind(this)}>
-                <TabsPane label="Portfolio" group="left">
-                    <InstrumentGrid instruments={this.props.instruments}/>
-                </TabsPane>
-                <TabsPane label="Watchlist" group="left">
-                    DERP
-                </TabsPane>
-                { this.props.focuses ? this.props.focuses.map((id, i) => {
+            <Tabs active={this.props.tabs.active} onCloseTab={this.handleOnCloseTab.bind(this)} onChangeTab={this.handleOnChangeTab.bind(this)}>
+                { this.props.tabs ? this.props.tabs.items.map(tab => {
+                    
+                    switch(tab.type) {
 
-                    const instrument = _.find(this.props.instruments, instrument => instrument._id === id);
-                    if (instrument) {
-                        return <TabsPane key={"tabsPanes" + i} label={instrument._name} group="right" closable={true}>
-                            <Focus instrument={instrument}/>
-                        </TabsPane>
+                        case 'portfolio':
+                            return (
+                                <TabsPane label={tab.label} group="left" key={_.uniqueId('mainTabs')}>
+                                    <InstrumentGrid instruments={this.props.instruments} />
+                                </TabsPane>
+                            )
+
+                        case 'watchlist':
+                            return (
+                                <TabsPane label={tab.label} group="left" key={_.uniqueId('mainTabs')}>
+                                    WATCHLIST
+                                </TabsPane>
+                            )
+
+                        case 'focus':
+
+                            const instrument = _.find(this.props.instruments, instrument => instrument._id === id);
+                            return instrument ?
+                                (
+                                    <TabsPane key={_.uniqueId('mainTabs')} label={instrument._name} group="right" closable={true}>
+                                        <Focus instrument={instrument} />
+                                    </TabsPane>
+                                )
+                            : false
+                        
+                        default:
+                            return false
+                        
+                        
                     }
-
+                    
                 }) : false }
             </Tabs>
         )
@@ -69,16 +71,12 @@ const mapStateToProps = state => {
     return {
         user: state.user,
         instruments: state.instruments,
-        focuses: state.focuses.instruments,
-        active: state.focuses.active
+        tabs: state.tabs
     }
 }
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleOnCloseTab(instrumentId) {
-        dispatch(closeFocusTab(instrumentId))
-    },
     dispatch
 });
     

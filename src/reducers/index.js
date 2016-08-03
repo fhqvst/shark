@@ -3,7 +3,7 @@ import instruments from './instruments'
 import notifications from './notifications'
 import positions from './positions'
 import search from './search'
-import focuses from './focus'
+import tabs from './tabs'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
@@ -12,5 +12,5 @@ export default combineReducers({
     notifications,
     positions,
     search,
-    focuses
+    tabs
 });

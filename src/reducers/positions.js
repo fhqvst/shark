@@ -7,6 +7,7 @@ export default function(state = [], action) {
 
         case ADD_POSITION:
 
+            // todo: Create an UPDATE_POSITION action instead of doing below
             let index = _.findIndex(state, {_instrumentId: action.position._instrumentId});
             if(index > -1) {
                 let positions = [...state];

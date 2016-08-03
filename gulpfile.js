@@ -140,11 +140,11 @@ function icons() {
  */
 function scripts() {
     return gulp.src(PATHS.scripts.src)
+        .pipe(sourcemaps.init('.'))
         .pipe(babel()).on('error', e => {
             console.log(e.stack);
             this.emit('end');
         })
-        .pipe(sourcemaps.init('.'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PATHS.scripts.dest))

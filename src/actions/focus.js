@@ -1,10 +1,10 @@
-import { ADD_FOCUS_TAB, OPEN_FOCUS_TAB, CLOSE_FOCUS_TAB } from '../constants';
+import { ADD_TAB, ACTIVATE_TAB, CLOSE_TAB } from '../constants';
 import { addedInstrument } from './instruments';
 import _ from 'lodash'
 
 export function openFocusTab(id) {
     return {
-        type: OPEN_FOCUS_TAB,
+        type: ACTIVATE_TAB,
         instrumentId: id
     }
 }
@@ -27,14 +27,14 @@ export function addFocusTab(id) {
 
 export function addedFocusTab(id) {
     return {
-        type: ADD_FOCUS_TAB,
+        type: ADD_TAB,
         instrumentId: id
     }
 }
 
 export function closeFocusTab(id) {
     return {
-        type: CLOSE_FOCUS_TAB,
+        type: CLOSE_TAB,
         instrumentId: id
     }
 }

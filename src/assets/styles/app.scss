@@ -9,6 +9,7 @@ $fa-font-path: '../../../node_modules/font-awesome/fonts/';
 @import 'blocks/button',
         'blocks/titlebar',
         'blocks/header',
+        'blocks/grid',
         'blocks/search',
         'blocks/tabs',
         'blocks/metadata',
@@ -17,6 +18,6 @@ $fa-font-path: '../../../node_modules/font-awesome/fonts/';
         'blocks/notifications',
         'blocks/value',
         'blocks/chart',
-        'blocks/instruments',
+'blocks/instrument',
         'blocks/focus',
         'blocks/layout';

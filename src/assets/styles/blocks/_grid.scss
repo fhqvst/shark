@@ -1,0 +1,11 @@
+.grid {
+  padding: 0 $medium-spacing;
+  @include clearfix;
+}
+
+.grid__item {
+  width: 30rem;
+  float: left;
+  margin-right: $medium-spacing;
+  margin-top: $medium-spacing;
+}

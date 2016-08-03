@@ -3,64 +3,47 @@ import _ from 'lodash';
 
 export default class Tabs extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            active: 0
-        }
+    _onChangeTab(index, event) {
+        this.props._onChangeTab(index, event);
     }
 
-    componentWillReceiveProps(props) {
-        this.setState({
-            active: props.active
-        })
-    }
-
-    onChangeTab(index, event) {
-        this.props.onChangeTab(index, event);
-    }
-
-    onCloseTab(index, event) {
+    _onCloseTab(index, event) {
         event.stopPropagation()
-        this.props.onCloseTab(index, event);
+        this.props._onCloseTab(index, event);
     }
 
-    renderButton(label, index, key, closable) {
-        let activeClass = 'button tabs__button' + (this.state.active === index ? ' is-active' : '');
+    _renderButton(label, index, closable) {
+        let activeClass = 'button tabs__button' + (this.props.active === index ? ' is-active' : '');
         return (
-            <button className={activeClass} onClick={this.onChangeTab.bind(this, index)} key={key}>
+            <button className={activeClass} onClick={this._onChangeTab.bind(this, index)} key={_.uniqueId('tabs__button')}>
                 {label}
-                { closable ? <i className="button__close" onClick={this.onCloseTab.bind(this, index)}></i> : ''}
+                { closable ? <i className="button__close" onClick={this._onCloseTab.bind(this, index)}></i> : ''}
             </button>
         );
     }
 
-    renderTitles() {
+    _renderTitles() {
         return (
             <div className="tabs__buttons">
                 <div className="tabs__group is-left">
                     {Children.map(this.props.children, (child, i) => {
-                        return child.props.group === 'left' ? this.renderButton(child.props.label, i, i, !!child.props.closable) : '';
+                        return child && child.props.group === 'left' ? this._renderButton(child.props.label, i, child.props.closable) : false;
                     })}
                 </div>
                 <div className="tabs__group is-right">
                     {Children.map(this.props.children, (child, i) => {
-                        return child.props.group === 'right' ? this.renderButton(child.props.label, i, i, !!child.props.closable) : '';
+                        return child && child.props.group === 'right' ? this._renderButton(child.props.label, i, child.props.closable) : false;
                     })}
                 </div>
             </div>
         );
     }
 
-    renderContent() {
-        return Children.toArray(this.props.children)[this.state.active]
-    }
-
     render() {
         return (
             <div className="tabs">
-                {this.renderTitles()}
-                {this.renderContent()}
+                {this._renderTitles()}
+                {Children.toArray(this.props.children)[this.props.active]}
             </div>
         )
     }
