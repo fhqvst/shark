@@ -8,18 +8,26 @@ import _ from 'lodash'
 class InstrumentGrid extends Component {
 
     componentDidMount() {
-        // this.props.dispatch(getPortfolio())
+        this.props.dispatch(getPortfolio())
     }
 
     render() {
-        return this.props.instruments ?
+        return this.props.positions ?
 
             <div className="instruments__grid">
-                { this.props.instruments.map(instrument => (
-                    <div className="instruments__item" key={'instrumentGrid' + instrument._id} onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)}>
-                        <Instrument instrument={instrument} />
-                    </div>
-                ))}
+                { this.props.positions.map(position => {
+                    const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
+
+                    if(instrument) {
+                        return <div className="instruments__item" key={'instrumentGrid' + instrument._id}
+                                    onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)}>
+                            <Instrument instrument={instrument}/>
+                        </div>
+                    }
+
+                    return false;
+
+                })}
             </div>
 
         : false
@@ -29,6 +37,7 @@ class InstrumentGrid extends Component {
 
 const mapStateToProps = state => ({
     focuses: state.focuses.instruments,
+    positions: state.positions,
     instruments: state.instruments
 });
 
