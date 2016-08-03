@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFocusTab, openFocusTab } from '../actions/focus';
+import { addTab, openFocusTab } from '../actions/tabs';
 import Instrument from '../components/Instrument';
 import Grid from '../components/Grid';
 import _ from 'lodash'
@@ -8,14 +8,15 @@ import _ from 'lodash'
 class InstrumentGrid extends Component {
 
     render() {
+        const handleOnDoubleClick = this.props.handleOnDoubleClick;
         return this.props.positions ?
 
             <Grid items={ this.props.positions.map(position => {
 
-            const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
-            return instrument ?
-                <Instrument instrument={instrument} onDoubleClick={this.props.handleOnDoubleClick.bind(this, instrument)} />
-            : false }
+                const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
+                return instrument ?
+                    <Instrument instrument={instrument} onDoubleClick={handleOnDoubleClick.bind(this, instrument)} />
+                : false }
 
             )} />
 
@@ -29,22 +30,29 @@ const mapStateToProps = state => ({
     positions: state.positions,
     instruments: state.instruments
 });
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    const { tabs } = stateProps;
+    const { dispatch } = dispatchProps;
+
+    return {
+        ...ownProps,
+        ...stateProps,
+        handleOnDoubleClick: instrument => {
+            if(_.find(tabs.items, tab => tab.instrumentId === instrument._id)) {
+                dispatch(openFocusTab(instrument._id));
+            } else {
+                dispatch(addTab({
+                    type: 'focus',
+                    label: instrument._name,
+                    instrumentId: instrument._id
+                }));
+            }
+        }
+    }
+}
 
 export default connect(
     mapStateToProps,
     null,
-    (stateProps, dispatchProps, ownProps) => {
-
-        let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
-
-        newProps.handleOnDoubleClick = instrument => {
-            if(_.find(newProps.focuses, focus => focus === instrument._id)) {
-                dispatchProps.dispatch(openFocusTab(instrument._id));
-            } else {
-                dispatchProps.dispatch(addFocusTab(instrument._id));
-            }
-        }
-
-        return newProps;
-    }
+    mergeProps
 )(InstrumentGrid);

@@ -4,12 +4,12 @@ import _ from 'lodash';
 export default class Tabs extends Component {
 
     _onChangeTab(index, event) {
-        this.props._onChangeTab(index, event);
+        this.props.onChangeTab(index, event);
     }
 
     _onCloseTab(index, event) {
         event.stopPropagation()
-        this.props._onCloseTab(index, event);
+        this.props.onCloseTab(index, event);
     }
 
     _renderButton(label, index, closable) {

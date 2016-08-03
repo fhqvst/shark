@@ -15,7 +15,7 @@ export default class Instrument extends Component {
         };
 
         return instrument ?
-            <div className="instrument">
+            <div className="instrument" onDoubleClick={this.props.onDoubleClick}>
                 <div className="instrument__top">
                     <span className="instrument__name">{instrument._name}</span>
                     <span className="instrument__price">

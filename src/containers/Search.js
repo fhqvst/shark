@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { search } from '../actions/search';
-import { openFocusTab, addFocusTab } from '../actions/focus';
+import { openFocusTab, addTab } from '../actions/tabs';
 import _ from 'lodash';
 
 class Search extends Component {

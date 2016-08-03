@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {openFocusTab,closeFocusTab} from '../actions/focus';
+import {openTab, closeTab} from '../actions/tabs';
 import {getPortfolio} from '../actions/positions';
 import InstrumentGrid from './InstrumentGrid';
 import _ from 'lodash'
@@ -11,21 +11,9 @@ import TabsPane from '../components/TabsPane';
 
 class MainTabs extends Component {
 
-    componentDidMount() {
-        // this.props.dispatch(getPortfolio())
-    }
-
-    handleOnCloseTab(index, event) {
-        console.log("Closing", index);
-    }
-
-    handleOnChangeTab(index, event) {
-        console.log("Changing", index);
-    }
-
     render() {
         return (
-            <Tabs active={this.props.tabs.active} onCloseTab={this.handleOnCloseTab.bind(this)} onChangeTab={this.handleOnChangeTab.bind(this)}>
+            <Tabs active={this.props.tabs.active} onCloseTab={this.props.handleOnCloseTab.bind(this)} onChangeTab={this.props.handleOnChangeTab.bind(this)}>
                 { this.props.tabs ? this.props.tabs.items.map(tab => {
                     
                     switch(tab.type) {
@@ -46,7 +34,7 @@ class MainTabs extends Component {
 
                         case 'focus':
 
-                            const instrument = _.find(this.props.instruments, instrument => instrument._id === id);
+                            const instrument = _.find(this.props.instruments, instrument => instrument._id === tab.instrumentId);
                             return instrument ?
                                 (
                                     <TabsPane key={_.uniqueId('mainTabs')} label={instrument._name} group="right" closable={true}>
@@ -77,7 +65,12 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    dispatch
+    handleOnChangeTab: index => {
+        dispatch(openTab(index));
+    },
+    handleOnCloseTab: index => {
+        dispatch(closeTab(index));
+    }
 });
     
 export default connect(
