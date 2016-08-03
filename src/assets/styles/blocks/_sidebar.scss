@@ -6,4 +6,6 @@
   right: 0;
   bottom: 0;
   border-left: .1rem solid $ghost-white;
+  opacity: 0;
+  animation: fade-in .25s forwards;
 }

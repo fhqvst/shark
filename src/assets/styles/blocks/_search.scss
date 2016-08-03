@@ -1,5 +1,7 @@
 .search {
   position: relative;
+  opacity: 0;
+  animation: fade-in .25s forwards;
   &:before {
     @include fa-icon;
     position: absolute;
