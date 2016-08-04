@@ -35,7 +35,7 @@ export function addTab(tab) {
         switch (tab.type) {
 
             case 'focus':
-                if(!_.find(getState().instruments, instrument => instrument._id === tab.instrumentId)) {
+                if(!_.find(getState().instruments, instrument => instrument.id === tab.instrumentId)) {
                     queue.add(() => avanza.getStock(id))
                         .then(instrument => {
                             dispatch(addedInstrument(instrument));

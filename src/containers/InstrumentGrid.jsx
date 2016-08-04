@@ -13,7 +13,7 @@ class InstrumentGrid extends Component {
 
             <Grid items={ this.props.positions.map(position => {
 
-                const instrument = _.find(this.props.instruments, {_id: position._instrumentId});
+                const instrument = _.find(this.props.instruments, {id: position.instrumentId});
                 return instrument ?
                     <Instrument instrument={instrument} onDoubleClick={handleOnDoubleClick.bind(this, instrument)} />
                 : false }
@@ -38,13 +38,13 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         ...ownProps,
         ...stateProps,
         handleOnDoubleClick: instrument => {
-            if(_.find(tabs.items, tab => tab.instrumentId === instrument._id)) {
-                dispatch(openFocusTab(instrument._id));
+            if(_.find(tabs.items, tab => tab.instrumentId === instrument.id)) {
+                dispatch(openFocusTab(instrument.id));
             } else {
                 dispatch(addTab({
                     type: 'focus',
-                    label: instrument._name,
-                    instrumentId: instrument._id
+                    label: instrument.name,
+                    instrumentId: instrument.id
                 }));
             }
         }

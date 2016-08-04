@@ -8,13 +8,19 @@ class Focus extends Component {
     }
 
     render() {
-        return this.props.instrument ?
-
+        const instrument = this.props.instrument;
+        return (
             <div className="focus__wrapper">
-                <Loader />
+                { instrument ?
+                    <div className="focus__content">
+                        <div className="focus__top">
+                            <h1 className="focus__title">{ instrument.name }</h1>
+                        </div>
+                    </div>
+                    : <Loader />
+                }
             </div>
-
-        : <Loader />
+        )
     }
 
 }

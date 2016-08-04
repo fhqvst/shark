@@ -11,6 +11,12 @@ import TabsPane from '../components/TabsPane';
 
 class MainTabs extends Component {
 
+    componentDidMount() {
+        if(this.props.user.authenticated) {
+            // this.props.dispatch(getPortfolio())
+        }
+    }
+
     render() {
         return (
             <Tabs active={this.props.tabs.active} onCloseTab={this.props.handleOnCloseTab.bind(this)} onChangeTab={this.props.handleOnChangeTab.bind(this)}>
@@ -34,10 +40,10 @@ class MainTabs extends Component {
 
                         case 'focus':
 
-                            const instrument = _.find(this.props.instruments, instrument => instrument._id === tab.instrumentId);
+                            const instrument = _.find(this.props.instruments, instrument => instrument.id === tab.instrumentId);
                             return instrument ?
                                 (
-                                    <TabsPane key={_.uniqueId('mainTabs')} label={instrument._name} group="right" closable={true}>
+                                    <TabsPane key={_.uniqueId('mainTabs')} label={instrument.name} group="right" closable={true}>
                                         <Focus instrument={instrument} />
                                     </TabsPane>
                                 )
@@ -71,7 +77,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnCloseTab: index => {
         dispatch(closeTab(index));
         dispatch(openTab(index === 2 ? 0 : index - 1));
-    }
+    },
+    dispatch
 });
     
 export default connect(

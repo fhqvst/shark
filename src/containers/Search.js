@@ -14,8 +14,8 @@ class Search extends Component {
                     { _.map(this.props.search.results, (instruments, type) => (
                         <ul key={'searchInstruments' + type} className="search__instruments">
                             { _.map(instruments, instrument => (
-                                <li key={'searchInstrument' + instrument._id} className="search__instrument">
-                                    <button className="search__link" onClick={this.props.handleOnClick.bind(this, instrument._id)}>{instrument.name}</button>
+                                <li key={'searchInstrument' + instrument.id} className="search__instrument">
+                                    <button className="search__link" onClick={this.props.handleOnClick.bind(this, instrument.id)}>{instrument.name}</button>
                                 </li>
                             )) }
                         </ul>

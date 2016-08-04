@@ -22,7 +22,7 @@
   "homepage": "https://github.com/fhqvst/shark#readme",
   "description": "A trading terminal from the future.",
   "dependencies": {
-    "avanza": "0.0.4",
+    "avanza": "0.0.5",
     "font-awesome": "^4.6.3",
     "highcharts": "^4.2.5",
     "localforage": "^1.4.2",
@@ -72,6 +72,8 @@
       "es2015",
       "react"
     ],
-    "plugins": ["transform-object-rest-spread"]
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   }
 }

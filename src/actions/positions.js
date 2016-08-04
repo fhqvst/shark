@@ -7,7 +7,7 @@ export function getPortfolio() {
             .then(positions => {
 
                 positions.map(position => {
-                    dispatch(addInstrument(position._instrumentId));
+                    dispatch(addInstrument(position.instrumentId));
                     dispatch(addPosition(position));
                 })
 

@@ -7,7 +7,7 @@ export default function(state = [], action) {
 
         case ADD_INSTRUMENT:
             // todo: Create an UPDATE_INSTRUMENT action instead of doing below
-            let index = _.findIndex(state, {_id: action.instrument._id});
+            let index = _.findIndex(state, {id: action.instrument.id});
             if(index > -1) {
                 let instruments = [...state];
                 instruments[index] = action.instrument;
