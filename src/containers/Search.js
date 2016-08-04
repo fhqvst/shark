@@ -15,7 +15,7 @@ class Search extends Component {
                         <ul key={'searchInstruments' + type} className="search__instruments">
                             { _.map(instruments, instrument => (
                                 <li key={'searchInstrument' + instrument.id} className="search__instrument">
-                                    <button className="search__link" onClick={this.props.handleOnClick.bind(this, instrument.id)}>{instrument.name}</button>
+                                    <button className="search__link" onClick={this.props.handleOnClick.bind(this, instrument)}>{instrument.name}</button>
                                 </li>
                             )) }
                         </ul>
@@ -32,29 +32,34 @@ const mapStateToProps = state => ({
     tabs: state.tabs.items
 });
 
-export default connect(mapStateToProps)(Search)
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    const { tabs } = stateProps;
+    const { dispatch } = dispatchProps;
 
-// export default connect(
-//     mapStateToProps,
-//     null,
-//     (stateProps, dispatchProps, ownProps) => {
-//
-//         let newProps = Object.assign({}, stateProps, dispatchProps, ownProps)
-//
-//         newProps.handleOnChange = event => {
-//             event.preventDefault()
-//             dispatchProps.dispatch(search(event.target.value));
-//         }
-//
-//         newProps.handleOnClick = (id, event) => {
-//             event.preventDefault()
-//             if(_.find(newProps.focuses, focus => focus === id)) {
-//                 dispatchProps.dispatch(openFocusTab(id));
-//             } else {
-//                 dispatchProps.dispatch(addFocusTab(id));
-//             }
-//         }
-//
-//         return newProps;
-//     }
-// )(Search);
+    return {
+        ...ownProps,
+        ...stateProps,
+        handleOnChange: event => {
+            if(event.target.value.length > 2) {
+                dispatch(search(event.target.value));
+            }
+        },
+        handleOnClick: instrument => {
+            if(_.find(tabs.items, tab => tab.instrumentId === instrument.id)) {
+                dispatch(openFocusTab(instrument.id));
+            } else {
+                dispatch(addTab({
+                    type: 'focus',
+                    label: instrument.name,
+                    instrumentId: instrument.id
+                }));
+            }
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    null,
+    mergeProps
+)(Search);

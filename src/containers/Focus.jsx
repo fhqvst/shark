@@ -61,6 +61,11 @@ class Focus extends Component {
                                     Positions
                                 </div>
                             </div>
+                            <div className="focus__item">
+                                <div className="focus__placeholder">
+                                    Twitter feed
+                                </div>
+                            </div>
                         </div>
 
                     </div>

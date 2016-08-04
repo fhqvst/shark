@@ -2,6 +2,7 @@
   position: relative;
   opacity: 0;
   animation: fade-in .25s forwards;
+  z-index: 20;
   &:before {
     @include fa-icon;
     position: absolute;

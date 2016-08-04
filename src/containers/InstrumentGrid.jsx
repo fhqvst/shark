@@ -30,6 +30,7 @@ const mapStateToProps = state => ({
     positions: state.positions,
     instruments: state.instruments
 });
+
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     const { tabs } = stateProps;
     const { dispatch } = dispatchProps;
