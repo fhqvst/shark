@@ -1,4 +1,8 @@
-![Shark](https://www.dropbox.com/s/gbmgmvdmekog330/shark.png?raw=1)
+# ![Shark](https://www.dropbox.com/s/gbmgmvdmekog330/shark.png?raw=1)
+
+[![Build Status](https://travis-ci.org/fbqvst/shark.svg?branch=master)](https://travis-ci.org/fhqvst/shark)
+[![Dependency Status](https://david-dm.org/fhqvst/shark.svg)](https://david-dm.org/fhqvst/shark)
+[![devDependency Status](https://david-dm.org/fhqvst/shark/dev-status.svg)](https://david-dm.org/fhqvst/shark#info=devDependencies)
 
 ## Installation
 
