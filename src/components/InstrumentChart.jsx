@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Highcharts from 'highcharts';
+import Highstock from 'highcharts/highstock';
 
 export default class Chart extends Component {
 
@@ -19,8 +19,7 @@ export default class Chart extends Component {
                 spacingTop: 10,
                 spacingLeft: 10,
                 spacingRight: 10,
-                height: 400,
-                width: 600
+                zoomType: 'xy'
             },
             labels: {
                 align: 'right',
@@ -37,10 +36,12 @@ export default class Chart extends Component {
             credits: false
         }
 
-        this.chart = new Highcharts.Chart(
+        this.chart = new Highstock.Chart(
             this.refs.chart,
             Object.assign({}, defaults, this.props.config)
         )
+
+        if(this.props.onLoad) { this.props.onLoad() }
 
     }
 

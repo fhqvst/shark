@@ -58,8 +58,7 @@
 
 .focus__item {
   float: left;
-  margin-left: $medium-spacing;
-  margin-top: $medium-spacing;
+  margin: $medium-spacing -#{$small-spacing};
 
   &:first-child {
     margin-left: 0;
@@ -69,4 +68,11 @@
 
 .focus__sell {
   margin-left: $small-spacing;
+  margin-right: $small-spacing;
+}
+
+.focus__chart,
+.focus__chart > div {
+  height: 50vh;
+  min-height: 60rem;
 }

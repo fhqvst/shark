@@ -6,7 +6,7 @@ import Value from '../components/Value';
 class Metadata extends Component {
 
     componentDidMount() {
-        this.props.dispatch(getOverview())
+        // this.props.dispatch(getOverview())
     }
 
     render() {
