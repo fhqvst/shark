@@ -1,9 +1,72 @@
+.focus__placeholder {
+  background: $off-white;
+  border: .5rem dashed $ghost-black;
+  text-align: center;
+  line-height: 40rem;
+  height: 40rem;
+  font-size: 2.4rem;
+  color: $gray;
+  padding: 0 10rem;
+}
+
 .focus__wrapper {
   padding: $medium-spacing;
   height: 100%;
 }
 
+.focus__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 5.1rem;
+  background: $off-black;
+  border-bottom: .1rem solid $ghost-white;
+  left: 0;
+  right: $sidebar-width;
+  height: 8rem;
+  padding: 0 $medium-spacing;
+  z-index: 10;
+}
+
 .focus__title {
   @include title;
   font-size: 2.4rem;
+  margin-bottom: 0;
+}
+
+.focus__content {
+  @include clearfix;
+  opacity: 0;
+  animation: fade-in .25s forwards;
+  padding-top: 8rem;
+}
+
+.focus__ticker {
+  opacity: .25;
+  font-size: 2rem;
+  margin-left: $small-spacing;
+}
+
+.focus__actions {
+  justify-content: space-between;
+}
+
+.focus__items {
+  @include clearfix;
+}
+
+.focus__item {
+  float: left;
+  margin-left: $medium-spacing;
+  margin-top: $medium-spacing;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+}
+
+.focus__sell {
+  margin-left: $small-spacing;
 }

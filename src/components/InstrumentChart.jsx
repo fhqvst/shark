@@ -19,7 +19,8 @@ export default class Chart extends Component {
                 spacingTop: 10,
                 spacingLeft: 10,
                 spacingRight: 10,
-                height: 400
+                height: 400,
+                width: 600
             },
             labels: {
                 align: 'right',
