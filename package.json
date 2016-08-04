@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron dist/main.js",
-    "watch": "gulp"
+    "watch": "gulp",
+    "build": "gulp build"
   },
   "author": "Filip Hallqvist <filiphallqvist@gmail.com>",
   "license": "MIT",
