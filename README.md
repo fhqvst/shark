@@ -1,4 +1,4 @@
-# Shark
+![Shark](https://www.dropbox.com/s/gbmgmvdmekog330/shark.png?raw=1)
 
 ## Installation
 
