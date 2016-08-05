@@ -17,8 +17,8 @@ export default class Chart extends Component {
             chart: {
                 spacingBottom: 10,
                 spacingTop: 10,
-                spacingLeft: 10,
-                spacingRight: 10,
+                spacingLeft: 0,
+                spacingRight: 0,
                 zoomType: 'xy'
             },
             labels: {

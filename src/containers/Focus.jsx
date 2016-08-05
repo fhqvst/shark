@@ -3,26 +3,22 @@ import { connect } from 'react-redux';
 import { getChartdata } from '../actions/chartdata';
 import Loader from '../components/Loader';
 import InstrumentChart from '../components/InstrumentChart';
+import Orderbook from '../components/Orderbook';
 import makeGetInstrumentChartdata from '../selectors/chartdata'
 
 class Focus extends Component {
     
     componentDidMount() {
-        setTimeout(() => {
-            this.props.dispatch(getChartdata(this.props.instrument.id, 'today'));
-        }, 1000)
+        // this.props.dispatch(getChartdata(this.props.instrument.id, 'today'));
     }
 
     componentWillReceiveProps(nextProps) {
-        // todo: This isn't executed upon receiving chart data. Might have something to do with Reselect.
         this.refs.chart.getChart().series[0].setData(
             nextProps.chartdata.data.today ? nextProps.chartdata.data.today : []
         )
     }
     
     render() {
-
-        console.log("Rendering this");
 
         const instrument = this.props.instrument;
         const config = {
@@ -51,12 +47,11 @@ class Focus extends Component {
                             <InstrumentChart config={config} ref="chart" />
                         </div>
 
+                        <div className="focus__orderbook">
+                            <Orderbook />
+                        </div>
+
                         <div className="focus__items">
-                            <div className="focus__item">
-                                <div className="focus__placeholder">
-                                    Orderbook
-                                </div>
-                            </div>
                             <div className="focus__item">
                                 <div className="focus__placeholder">
                                     Latest trades
@@ -96,7 +91,6 @@ class Focus extends Component {
 const makeMapStateToProps = () => {
     return (state, props) => {
         return {
-            positions: state.positions,
             user: state.user,
             chartdata: makeGetInstrumentChartdata()(state, props)
         }

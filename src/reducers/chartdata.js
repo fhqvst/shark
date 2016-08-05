@@ -13,13 +13,14 @@ export default function(state = [], action) {
             return [...state, chartdata]
 
         case GET_CHARTDATA:
-            let index = _.findIndex(state, {instrumentId: action.instrumentId});
-            let currentState = [...state];
-
-            if(index > -1) {
-                currentState[index].data[action.period] = action.data;
-            }
-            return currentState;
+            return state.map(chartdata => {
+                if(chartdata.instrumentId === action.instrumentId) {
+                    let newData = Object.assign({}, chartdata);
+                    newData.data[action.period] = action.data
+                    return newData;
+                }
+                return chartdata;
+            })
 
         default:
             return state

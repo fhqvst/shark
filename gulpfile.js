@@ -147,8 +147,7 @@ function scripts() {
         })
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(PATHS.scripts.dest))
-        .pipe(livereload());
+        .pipe(gulp.dest(PATHS.scripts.dest));
 }
 
 /**

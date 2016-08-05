@@ -1,6 +1,6 @@
 .focus__placeholder {
-  background: $off-white;
-  border: .5rem dashed $ghost-black;
+  background: transparent;
+  border: .1rem dashed $ghost-white;
   text-align: center;
   line-height: 40rem;
   height: 40rem;
@@ -18,12 +18,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 5.1rem;
   background: $off-black;
   border-bottom: .1rem solid $ghost-white;
   left: 0;
   right: $sidebar-width;
+  margin: 0 #{-$medium-spacing} $large-spacing;
   height: 8rem;
   padding: 0 $medium-spacing;
   z-index: 10;
@@ -39,7 +38,6 @@
   @include clearfix;
   opacity: 0;
   animation: fade-in .25s forwards;
-  padding-top: 8rem;
 }
 
 .focus__ticker {
@@ -54,14 +52,17 @@
 
 .focus__items {
   @include clearfix;
+  clear: left;
 }
 
 .focus__item {
+  width: calc(33% - (#{$medium-spacing}/2));
+  margin-right: $medium-spacing;
+  margin-top: $medium-spacing;
   float: left;
-  margin: $medium-spacing -#{$small-spacing};
 
-  &:first-child {
-    margin-left: 0;
+  &:nth-child(3n) {
+    margin-right: 0;
   }
 
 }
@@ -71,8 +72,20 @@
   margin-right: $small-spacing;
 }
 
-.focus__chart,
-.focus__chart > div {
-  height: 50vh;
-  min-height: 60rem;
+.focus__chart {
+
+  width: calc((200%/3) - (#{$medium-spacing}/2));
+  margin-right: $medium-spacing;
+  float: left;
+  border: .1rem solid $ghost-white;
+
+  &, & > div {
+    height: 50vh;
+    min-height: 60rem;
+  }
+}
+
+.focus__orderbook {
+  width: calc((100%/3) - (#{$medium-spacing}/2));
+  float: left;
 }
