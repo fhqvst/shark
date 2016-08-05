@@ -42,3 +42,6 @@ export const CONVERTIBLE = 'CONVERTIBLE';
 export const ADD_TAB = 'ADD_TAB';
 export const ACTIVATE_TAB = 'ACTIVATE_TAB'
 export const CLOSE_TAB = 'CLOSE_TAB'
+
+// Chartdata
+export const GET_CHARTDATA = 'GET_CHARTDATA'

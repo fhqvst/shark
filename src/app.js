@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { logout } from './actions/user'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -32,9 +33,13 @@ class AppProvider extends Component {
             storage: localforage,
         }, () => {
 
-            avanza.authenticationSession = store.getState().user.authenticationSession
-            avanza.subscriptionId = store.getState().user.subscriptionId
-            avanza.securityToken = store.getState().user.securityToken
+            if(new Date().getTime() - store.getState().user.timestamp > (86400 * 1000)) {
+                store.dispatch(logout())
+            } else {
+                avanza.authenticationSession = store.getState().user.authenticationSession
+                avanza.subscriptionId = store.getState().user.subscriptionId
+                avanza.securityToken = store.getState().user.securityToken
+            }
 
             this.setState({ rehydrated: true })
 

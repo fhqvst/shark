@@ -4,6 +4,7 @@ import notifications from './notifications'
 import positions from './positions'
 import search from './search'
 import tabs from './tabs'
+import chartdata from './chartdata'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
     notifications,
     positions,
     search,
-    tabs
+    tabs,
+    chartdata
 });

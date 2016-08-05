@@ -23,7 +23,7 @@
   "homepage": "https://github.com/fhqvst/shark#readme",
   "description": "A trading terminal from the future.",
   "dependencies": {
-    "avanza": "0.0.5",
+    "avanza": "^0.0.6",
     "font-awesome": "^4.6.3",
     "highcharts": "^4.2.5",
     "localforage": "^1.4.2",
@@ -36,7 +36,8 @@
     "redux-action-buffer": "^1.0.1",
     "redux-logger": "^2.6.1",
     "redux-persist": "^3.2.2",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
