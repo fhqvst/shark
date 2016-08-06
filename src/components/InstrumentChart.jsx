@@ -15,9 +15,9 @@ export default class Chart extends Component {
 
         const defaults = {
             chart: {
-                spacingBottom: 10,
-                spacingTop: 10,
-                spacingLeft: 0,
+                spacingBottom: 20,
+                spacingTop: 20,
+                spacingLeft: 20,
                 spacingRight: 0,
                 zoomType: 'xy'
             },
@@ -29,6 +29,12 @@ export default class Chart extends Component {
             yAxis: {
                 title: false,
                 tickPixelInterval: 26
+            },
+            xAxis: {
+                type: 'datetime',
+                gridLineWidth: 1,
+                minorTickWidth: 1,
+                minorTickInterval: 'auto'
             },
             legend: {
                 enabled: false
