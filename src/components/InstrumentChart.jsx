@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
 import Highstock from 'highcharts/highstock';
+import Pan from '../helpers/highstocks-pan';
+
+Pan(Highstock)
 
 export default class Chart extends Component {
 
@@ -13,13 +15,16 @@ export default class Chart extends Component {
 
     componentDidMount() {
 
+        const data = this.props.config.series[0].data
         const defaults = {
             chart: {
                 spacingBottom: 20,
                 spacingTop: 20,
                 spacingLeft: 20,
                 spacingRight: 0,
-                zoomType: 'xy'
+                zoomType: 'xy',
+                panning: true,
+                panKey: 'shift'
             },
             labels: {
                 align: 'right',
@@ -28,16 +33,32 @@ export default class Chart extends Component {
             title: false,
             yAxis: {
                 title: false,
-                tickPixelInterval: 26
+                tickPixelInterval: 26,
+                startOnTick: false,
+                endOnTick: false
             },
             xAxis: {
                 type: 'datetime',
                 gridLineWidth: 1,
                 minorTickWidth: 1,
-                minorTickInterval: 'auto'
+                minorTickInterval: 'auto',
+                max: data[data.length - 1].x + 60 * 60 * 1000
             },
             legend: {
                 enabled: false
+            },
+            plotOptions: {
+                line: {
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false
+                    }
+                }
             },
             credits: false
         }

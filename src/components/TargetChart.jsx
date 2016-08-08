@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
 import Highcharts from 'highcharts';
+import Pan from '../helpers/highstocks-pan';
+
+Pan(Highcharts)
 
 export default class Chart extends Component {
 
@@ -20,6 +22,9 @@ export default class Chart extends Component {
                 spacingLeft: 0,
                 spacingRight: 0,
                 height: 240,
+                zoomType: 'y',
+                panning: true,
+                panKey: 'shift'
             },
             labels: {
                 align: 'right',
@@ -65,70 +70,6 @@ export default class Chart extends Component {
             this.refs.chart,
             Object.assign({}, defaults, this.props.config)
         )
-
-        let downYPixels,
-            downYValue,
-            hasDragged = 0,
-            isDragging = false,
-            yAxis = this.chart.yAxis[0],
-            chart = this.chart;
-
-        Highcharts.addEvent(this.refs.chart, 'mousedown', function (e) {
-
-            chart.pointer.zoomY = chart.pointer.zoomVert = chart.pointer.hasZoom = e.shiftKey;
-
-            if(e.shiftKey) {
-                chart.pointer.onContainerMouseDown(e);
-            } else {
-
-                downYPixels = chart.pointer.normalize(e).chartY;
-                downYValue = yAxis.toValue(downYPixels);
-                isDragging = true;
-
-            }
-
-        });
-
-        Highcharts.addEvent(this.refs.chart, 'mousemove', function (e) {
-            if (isDragging) {
-                var dragYPixels = chart.pointer.normalize(e).chartY,
-                    dragYValue = yAxis.toValue(dragYPixels),
-
-                    yExtremes = yAxis.getExtremes(),
-
-                    yUserMin = yExtremes.min,
-                    yUserMax = yExtremes.max,
-                    yDataMin = yExtremes.dataMin,
-                    yDataMax = yExtremes.dataMax,
-
-                    yMin = yUserMin !== undefined ? yUserMin : yDataMin,
-                    yMax = yUserMax !== undefined ? yUserMax : yDataMax,
-
-                    newMinY,
-                    newMaxY;
-
-                hasDragged = Math.abs(downYPixels - dragYPixels);
-
-                if (hasDragged > 2) {
-
-                    newMinY = yMin - (dragYValue - downYValue);
-                    newMaxY = yMax - (dragYValue - downYValue);
-
-                    if(newMinY > 0) {
-                        yAxis.setExtremes(newMinY, newMaxY, true, false);
-                    } else {
-                        yAxis.setExtremes(0, yExtremes.max, true, false);
-                    }
-
-                }
-            }
-        });
-
-        Highcharts.addEvent(this.refs.chart, 'mouseup', function (e) {
-            if (isDragging) {
-                isDragging = false;
-            }
-        });
 
     }
 
