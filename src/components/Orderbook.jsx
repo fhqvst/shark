@@ -15,6 +15,7 @@ export default ({orderbook}) => (
                 <tbody>
                     <tr>
                         <td>
+                            
                             { Math.floor(100 * Math.random()) }
                         </td>
                         <td>
