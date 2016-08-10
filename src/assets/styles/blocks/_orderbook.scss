@@ -6,22 +6,30 @@
 
   th {
     @include title;
+    border-bottom: .1rem solid $ghost-white;
   }
 
   th, td {
     text-align: left;
-    &:nth-child(2),
-    &:nth-child(4) {
+    padding: $tiny-spacing 0;
+    &:nth-child(3),
+    &:nth-child(5),
+    &:nth-child(6) {
       text-align: right;
     }
 
-    &:nth-child(2) {
+    &:nth-child(3) {
       padding-right: $small-spacing;
     }
-    &:nth-child(3) {
+    &:nth-child(4) {
       padding-left: $small-spacing;
     }
 
+  }
+
+  tr:last-child td {
+    @include title;
+    border-top: .1rem solid $ghost-white;
   }
 
 }
