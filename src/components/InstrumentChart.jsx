@@ -73,7 +73,9 @@ export default class Chart extends Component {
     }
 
     componentWillUnmount() {
-        this.chart.destroy();
+        if(this.chart) {
+            this.chart.destroy();
+        }
     }
 
     render() {
