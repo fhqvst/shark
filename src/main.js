@@ -13,7 +13,8 @@ function createWindow () {
         height: height,
         minWidth: 220,
         minHeight: 680,
-        titleBarStyle: 'hidden'
+        titleBarStyle: 'hidden',
+        show: false
     });
 
     mainWindow.loadURL(`file://${__dirname}/index.html`)
@@ -24,6 +25,10 @@ function createWindow () {
         // when you should delete the corresponding element.
         mainWindow = null
     })
+
+    mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow.show();
+    });
     
 }
 
