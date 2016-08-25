@@ -1,0 +1,18 @@
+.table {
+  font-size: 1.2rem;
+  width: 100%;
+  text-transform: uppercase;
+
+  th, td {
+    padding: .25rem;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background: $ghost-black;
+  }
+
+}

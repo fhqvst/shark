@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getChartdata } from '../actions/chartdata';
 import Loader from '../components/Loader';
+import Table from '../components/Table';
 import InstrumentChart from '../components/InstrumentChart';
 import Orderbook from '../components/Orderbook';
 import makeGetInstrumentChartdata from '../selectors/chartdata'
+import _ from 'lodash'
 
 class Focus extends Component {
     
@@ -58,9 +60,15 @@ class Focus extends Component {
                                 </div>
                             </div>
                             <div className="focus__item">
-                                <div className="focus__placeholder">
-                                    Instrument data
-                                </div>
+                                <Table columns={{
+                                    key: 'Key',
+                                    value: 'Value'
+                                }} data={_.filter(_.map(instrument, (value, key) => {
+                                    if(key !== 'company') return {
+                                        key: key,
+                                        value: value
+                                    }
+                                }))} />
                             </div>
                             <div className="focus__item">
                                 <div className="focus__placeholder">
