@@ -98,9 +98,9 @@ function styles() {
         .pipe(sass({
             importer: importer
         }))
-        .on('error', function (err) {
-            console.error('\n' + err.toString() + '\n')
-            this.emit("end")
+        .on('error', function(e) {
+            console.error('\n' + e.toString() + '\n')
+            this.emit('end')
         })
         .pipe(postcss([
             autoprefixer({
@@ -141,9 +141,10 @@ function icons() {
 function scripts() {
     return gulp.src(PATHS.scripts.src)
         .pipe(sourcemaps.init('.'))
-        .pipe(babel()).on('error', e => {
-            console.log(e.stack);
-            this.emit('end');
+        .pipe(babel())
+        .on('error', function(e) {
+            console.error('\n' + e.toString() + '\n')
+            this.emit('end')
         })
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
