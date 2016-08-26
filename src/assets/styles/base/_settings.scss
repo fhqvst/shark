@@ -11,7 +11,17 @@ $green: #5fba7d;
 $red: #df3b4e;
 $dark-gray: #555555;
 $blue: #1e99a8;
-$light-blue: #ddedf2;
+$sky-blue: #91D1E6;
+$ice-blue: #ddedf2;
+$light-blue: #AEC4CF;
+$black-blue: #1C2931;
+$dark-blue: lighten($black-blue, 10);
+
+$darkest-color: $black-blue;
+$darker-color: $dark-blue;
+$light-color: $light-blue;
+$lighter-color: $ice-blue;
+$border-color: $dark-blue;
 
 // Breakpoints
 $tiny: max-width 480px;

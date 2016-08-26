@@ -3,9 +3,16 @@
 }
 
 .highcharts-grid path {
-  stroke: $ghost-white;
+  stroke: rgba($border-color, .5);
 }
 
 .highcharts-series path:first-child {
   stroke: $blue;
+  stroke-width: .3rem;
 }
+
+.highcharts-axis-labels text {
+  color: rgba($blue, .5) !important;
+  fill: rgba($blue, .5) !important;
+}
+

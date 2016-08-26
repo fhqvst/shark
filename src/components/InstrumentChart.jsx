@@ -18,31 +18,44 @@ export default class Chart extends Component {
         const data = this.props.config.series[0].data
         const defaults = {
             chart: {
-                spacingBottom: 20,
-                spacingTop: 20,
-                spacingLeft: 20,
+                spacingBottom: 0,
+                spacingTop: 0,
+                spacingLeft: 0,
                 spacingRight: 0,
                 zoomType: 'xy',
                 panning: true,
-                panKey: 'shift'
-            },
-            labels: {
-                align: 'right',
-                x: 0
+                panKey: 'shift',
+                style: {
+                    fontFamily: 'Montserrat',
+                    fontWeight: 'bold'
+                }
             },
             title: false,
             yAxis: {
                 title: false,
-                tickPixelInterval: 26,
+                tickPixelInterval: 60,
                 startOnTick: false,
-                endOnTick: false
+                endOnTick: false,
+                labels: {
+                    align: 'left',
+                    x: 20
+                }
             },
             xAxis: {
                 type: 'datetime',
                 gridLineWidth: 1,
                 minorTickWidth: 1,
                 minorTickInterval: 'auto',
-                max: data[data.length - 1].x + 60 * 60 * 1000
+                min: data[0].x - 60 * 60 * 1000,
+                max: data[data.length - 1].x + 60 * 60 * 1000,
+                labels: {
+                    align: 'left',
+                    x: 10,
+                    y: -20
+                },
+                lineWidth: 0,
+                lineColor: 'red',
+                tickLength: 0
             },
             legend: {
                 enabled: false
@@ -58,6 +71,12 @@ export default class Chart extends Component {
                     marker: {
                         enabled: false
                     }
+                }
+            },
+            tooltip: {
+                crosshairs: {
+                    dashStyle: 'solid',
+                    color: '#1e99a8'
                 }
             },
             credits: false

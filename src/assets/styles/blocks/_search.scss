@@ -52,8 +52,8 @@
 
 .search__results {
   display: none;
-  background: $off-black;
-  border: .1rem solid $ghost-white;
+  background: $darkest-color;
+  border: .1rem solid $border-color;
   border-top: none;
   position: absolute;
   bottom: 0;
@@ -67,7 +67,7 @@
 }
 
 .search__instrument {
-  border-bottom: .1rem solid $ghost-white;
+  border-bottom: .1rem solid $border-color;
   outline: none;
 }
 
