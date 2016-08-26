@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getChartdata } from '../actions/chartdata';
-import Loader from '../components/Loader';
 import Table from '../components/Table';
+import Loader from '../components/Loader';
 import InstrumentChart from '../components/InstrumentChart';
 import Orderbook from '../components/Orderbook';
 import makeGetInstrumentChartdata from '../selectors/chartdata'
@@ -11,7 +11,7 @@ import _ from 'lodash'
 class Focus extends Component {
     
     componentDidMount() {
-        // this.props.dispatch(getChartdata(this.props.instrument.id, 'today'));
+        this.props.dispatch(getChartdata(this.props.instrument.id, 'today'));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -46,7 +46,7 @@ class Focus extends Component {
                         </div>
 
                         <div className="focus__chart">
-                            <InstrumentChart config={config} ref="chart" />
+                            <InstrumentChart config={config} ref="chart"/>
                         </div>
 
                         <div className="focus__orderbook">

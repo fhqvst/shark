@@ -13,6 +13,12 @@ export default class Chart extends Component {
         return this.chart;
     }
 
+    componentDidUpdate(prevProps) {
+        if(!prevProps.config.series[0].data.length)
+            this.getChart().redraw();
+    }
+
+
     componentDidMount() {
 
         const data = this.props.config.series[0].data
@@ -46,8 +52,8 @@ export default class Chart extends Component {
                 gridLineWidth: 1,
                 minorTickWidth: 1,
                 minorTickInterval: 'auto',
-                min: data[0].x - 60 * 60 * 1000,
-                max: data[data.length - 1].x + 60 * 60 * 1000,
+                min: data.length ? data[0].x - 60 * 60 * 1000 : undefined,
+                max: data.length ? data[data.length - 1].x + 60 * 60 * 1000 : undefined,
                 labels: {
                     align: 'left',
                     x: 10,

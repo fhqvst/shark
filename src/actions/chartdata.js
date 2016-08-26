@@ -1,4 +1,5 @@
 import { GET_CHARTDATA } from '../constants';
+import _ from 'lodash'
 
 export function gotChartdata(id, period, data) {
     return {
@@ -11,6 +12,10 @@ export function gotChartdata(id, period, data) {
 
 export function getChartdata(id, period) {
     return (dispatch, getState, {avanza, queue}) => {
+
+        if(_.find(getState().chartdata, { instrumentId: id, period: period }))
+            return
+
         queue.add(() => avanza.getChartdata(id, period))
         .then(chartdata => {
 

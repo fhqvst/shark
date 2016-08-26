@@ -15,23 +15,24 @@ export default ({orderbook}) => (
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            
-                            { Math.floor(100 * Math.random()) }
-                        </td>
-                        <td>
-                            { Math.floor(100 * Math.random()) }
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            { Math.floor(100 * Math.random()) }
-                        </td>
-                        <td>
-                            { Math.floor(100 * Math.random()) }
-                        </td>
-                    </tr>
+                    { [1, 2, 3, 4, 5].map((value, index) => (
+                        <tr key={index}>
+                            <td>
+                                { Math.floor(value * Math.random()) }
+                            </td>
+                            <td>
+                                { Math.floor(value * Math.random()) }
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                { Math.floor(value * Math.random()) }
+                            </td>
+                            <td>
+                                { Math.floor(value * Math.random()) }
+                            </td>
+                        </tr>
+                    )) }
                     <tr>
                         <td>
                             { Math.floor(100 * Math.random()) }
