@@ -8,10 +8,14 @@ Trading terminals these days are way too complicated and expensive to use. My ho
 
 The project is currently in alpha stage, and there are still quite a lot of features I'd like to add. These include, among other things:
 * Notifications based on price movements
-* Net broker positions
 * Information from FI's "Insynslistan"
 * Custom watchlists
 * Some sort of diary
+* Twitter integration
+
+Features that will not be added:
+* Advanced graphing tools
+* Anything related to technical analysis
 
 ## Installation
 
