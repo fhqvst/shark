@@ -6,7 +6,7 @@
 
 Trading terminals these days are way too complicated and expensive to use. My hopes are that this will be a good enough replacement for all of us who aren't interested in paying $300 a month for features we don't need and much less use. 
 
-The project is currently in alpha stage, and there are still quite a lot of features I'd like to add. This includes:
+The project is currently in alpha stage, and there are still quite a lot of features I'd like to add. These include, among other things:
 * Notifications based on price movements
 * Net broker positions
 * Information from FI's "Insynslistan"
