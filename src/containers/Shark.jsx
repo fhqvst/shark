@@ -10,7 +10,7 @@ class Shark extends Component {
 
     render() {
 
-        return !this.props.user.authenticated ?
+        return this.props.user.authenticated ?
             <main>
                 <div className="titlebar"></div>
                 <header className="header">

@@ -7,7 +7,6 @@ export default class Button extends Component {
     }
 
     render() {
-        console.log("Rendered")
         return (
             <button
                 type={ this.props.type || 'button' }

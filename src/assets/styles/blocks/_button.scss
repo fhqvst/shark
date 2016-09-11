@@ -8,7 +8,7 @@
   letter-spacing: .1em;
   font-size: 1.2rem;
   padding: $small-spacing $medium-spacing;
-  transition: .25s;
+  transition: .25s transform, .25s opacity, background-color .25s;
   position: relative;
 
   &:active {
@@ -35,5 +35,39 @@
   }
   &:hover {
     color: $white;
+  }
+}
+
+.button.is-loading {
+  color: transparent;
+
+  &:before {
+    content: '';
+    border: .2rem solid $white;
+    border-left-color: transparent;
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    left: 50%;
+    top: 50%;
+    vertical-align: middle;
+    position: absolute;
+    animation: button-loader .75s infinite linear;
+  }
+
+}
+
+@keyframes button-loader {
+  0% {
+    opacity: .5;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5;
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

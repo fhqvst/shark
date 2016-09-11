@@ -41,10 +41,27 @@ export default class Login extends Component {
             loading: true
         }
 
+        this.forceUpdate()
+        this.props.handleOnSubmit(event)
+    }
+
+}
+
+const mapStateToProps = state => {
+    return {}
+}
+
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    handleOnSubmit: event => {
         dispatch(login({
             username: event.target.querySelector('#username').value,
             password: event.target.querySelector('#password').value
         }));
     }
+});
 
-}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login)
