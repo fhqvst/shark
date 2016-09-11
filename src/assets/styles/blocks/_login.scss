@@ -23,11 +23,9 @@
 }
 
 .login__logo {
-  text-align: center;
-  font-size: 6rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: -.05em;
+  width: 20rem;
+  display: block;
+  margin: 0 auto $medium-spacing;
 }
 
 .login__username,

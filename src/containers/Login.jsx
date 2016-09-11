@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/user';
+import Button from '../components/Button'
 
-class Login extends Component {
+export default class Login extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            loading: false
+        }
+    }
 
     render() {
+        let { loading } = this.state;
         return (
-            <form onSubmit={this.props.handleOnSubmit} className="login">
+            <form onSubmit={this.handleOnSubmit.bind(this)} className="login">
                 <div className="login__content">
-                    <h1 className="login__logo">Shark</h1>
+                    <img className="login__logo" src="assets/images/logo-white.svg" />
                     <p>
                         Shark is a trading terminal made to cancel the noise and let you focus on what's important.
                     </p>
@@ -18,27 +27,24 @@ class Login extends Component {
                     <div className="login__password">
                         <input type="password" placeholder="Password" id="password" ref="password" />
                     </div>
-                    <input type="submit" className="button login__submit" value="Login" />
+                    <Button type="submit" className="login__submit" loading={loading}>Login</Button>
                 </div>
             </form>
         )
     }
 
-}
+    handleOnSubmit(event) {
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleOnSubmit: event => {
         event.preventDefault()
+
+        this.state = {
+            loading: true
+        }
+
         dispatch(login({
             username: event.target.querySelector('#username').value,
             password: event.target.querySelector('#password').value
         }));
     }
-});
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Login);
+}
