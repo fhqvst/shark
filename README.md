@@ -4,9 +4,22 @@
 [![Dependency Status](https://david-dm.org/fhqvst/shark.svg)](https://david-dm.org/fhqvst/shark)
 [![devDependency Status](https://david-dm.org/fhqvst/shark/dev-status.svg)](https://david-dm.org/fhqvst/shark#info=devDependencies)
 
+Trading terminals these days are way too complicated and expensive to use. My hopes are that this will be a good enough replacement for all of us who aren't interested in paying $300 a month for features we don't need and much less use. 
+
+The project is currently in alpha stage, and there are still quite a lot of features I'd like to add. This includes:
+* Notifications based on price movements
+* Net broker positions
+* Information from FI's "Insynslistan"
+* Custom watchlists
+* Some sort of diary
+
 ## Installation
 
+N/A
+
 ## Documentation
+
+N/A
 
 ## LICENSE
 
