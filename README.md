@@ -13,7 +13,7 @@ The project is currently in alpha stage, and there are still quite a lot of feat
 * Some sort of diary
 * Twitter integration
 
-Features that will not be added:
+Features that will _not_ be added includes:
 * Advanced graphing tools
 * Anything related to technical analysis
 
