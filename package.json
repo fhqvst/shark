@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "start": "electron dist/main.js",
     "watch": "gulp",
     "build": "gulp build"
@@ -49,13 +49,13 @@
     "browserify": "^13.1.0",
     "cssnano": "^3.6.2",
     "del": "^2.2.0",
-    "electron-packager": "^7.3.0",
+    "electron-packager": "^8.0.0",
     "electron-prebuilt": "^1.3.4",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.5.2",
-    "gulp-iconfont": "~5.0.1",
+    "gulp-iconfont": "^8.0.1",
     "gulp-iconfont-css": "^2.0.0",
     "gulp-imagemin": "^3.0.1",
     "gulp-livereload": "^3.8.1",
@@ -65,7 +65,7 @@
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-task-listing": "~1.0.0",
-    "gulp-uglify": "^1.2.0",
+    "gulp-uglify": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
