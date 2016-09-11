@@ -45,3 +45,7 @@ export const CLOSE_TAB = 'CLOSE_TAB'
 
 // Chartdata
 export const GET_CHARTDATA = 'GET_CHARTDATA'
+
+// Orderbook
+export const ADD_ORDERBOOK = 'ADD_ORDERBOOK'
+export const UPDATE_ORDERBOOK = 'UPDATE_ORDERBOOK'

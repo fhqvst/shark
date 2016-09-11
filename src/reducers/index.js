@@ -5,6 +5,7 @@ import positions from './positions'
 import search from './search'
 import tabs from './tabs'
 import chartdata from './chartdata'
+import orderbooks from './orderbooks'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
     positions,
     search,
     tabs,
-    chartdata
+    chartdata,
+    orderbooks
 });
