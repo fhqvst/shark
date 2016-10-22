@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
+import makeGetOrdebook from '../selectors/orderbook'
+import { connect } from 'react-redux';
+import getOrderbook from '../actions/orderbook'
 
 export default class Orderbook extends Component {
 
-    constructor() {
-        super()
-        this.props.dispatch()
+    componentDidMount() {
+        this.props.dispatch(
+            getOrderbook(this.props.instrumentId)
+        )
     }
 
     render() {
@@ -23,7 +27,7 @@ export default class Orderbook extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        { [1, 2, 3, 4, 5].map((value, index) => (
+                        { this.props.orderbook ? this.props.orderbook.levels.map((value, index) => (
                             <tr key={index}>
                                 <td>
                                     { Math.floor(value * Math.random()) }
@@ -40,17 +44,17 @@ export default class Orderbook extends Component {
                                     { Math.floor(value * Math.random()) }
                                 </td>
                             </tr>
-                        )) }
+                        )) : false }
                         <tr>
                             <td>
-                                { Math.floor(100 * Math.random()) }
+
                             </td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>
-                                { Math.floor(100 * Math.random()) }
+
                             </td>
                         </tr>
                         </tbody>
@@ -62,16 +66,16 @@ export default class Orderbook extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-
+const mapStateToProps = () => {
+    return (state, props) => {
+        return {
+            orderbook: makeGetOrdebook()(state, props)
+        }
     }
+
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleOnSubmit: event => {
-
-    },
     dispatch
 });
 

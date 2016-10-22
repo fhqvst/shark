@@ -1,21 +1,27 @@
 import {
     ADD_ORDERBOOK, UPDATE_ORDERBOOK
 } from '../constants';
-import { REHYDRATE } from 'redux-persist/constants';
 
 export default function orderbooks(state = [], action) {
 
     switch(action.type) {
 
         case ADD_ORDERBOOK: {
-            return Object.assign({}, state, {
-                metadata: action.metadata
-            })
-            
+            return [
+                {
+                    id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+                    instrumentId: action.instrumentId,
+                    levels: action.levels
+                },
+                ...state
+            ]
+
         }
 
         case UPDATE_ORDERBOOK: {
-
+            return state.map(orderbook =>
+                orderbook.instrumentId === action.instrumentId ? { ...orderbook, levels: action.levels } : orderbook
+            )
         }
 
         default:

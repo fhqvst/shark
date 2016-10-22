@@ -17,6 +17,10 @@ Features that will _not_ be added include:
 * Advanced graphing tools
 * Anything related to technical analysis
 
+## Screenshots
+<img src="https://raw.githubusercontent.com/fhqvst/shark/master/docs/login.jpg">
+<img src="https://raw.githubusercontent.com/fhqvst/shark/master/docs/overview.jpg">
+
 ## Installation
 
 N/A

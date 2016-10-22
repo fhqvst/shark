@@ -5,7 +5,7 @@ import _ from 'lodash';
 export function addOrderbook(instrumentId, levels) {
     return {
         type: ADD_ORDERBOOK,
-        instrument: instrumentId,
+        instrumentId: instrumentId,
         levels: levels
     }
 }
@@ -13,7 +13,7 @@ export function addOrderbook(instrumentId, levels) {
 export function updateOrderbook(instrumentId, levels) {
     return {
         type: UPDATE_ORDERBOOK,
-        instrument: instrumentId,
+        instrumentId: instrumentId,
         levels: levels
     }
 }

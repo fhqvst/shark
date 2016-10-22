@@ -50,7 +50,7 @@ class Focus extends Component {
                         </div>
 
                         <div className="focus__orderbook">
-                            <Orderbook />
+                            <Orderbook instrumentId={instrument.id} />
                         </div>
 
                         <div className="focus__items">
