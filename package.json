@@ -33,6 +33,7 @@
     "highcharts": "^4.2.5",
     "localforage": "^1.4.2",
     "lodash": "^4.14.1",
+    "nude-scss": "^1.0.0",
     "promise-queue": "^2.2.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -40,9 +41,8 @@
     "redux": "^3.5.2",
     "redux-action-buffer": "^1.0.1",
     "redux-logger": "^2.6.1",
-    "redux-persist": "^3.2.2",
-    "redux-thunk": "^2.1.0",
-    "reselect": "^2.5.3"
+    "redux-persist": "^4.0.0-alpha6",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

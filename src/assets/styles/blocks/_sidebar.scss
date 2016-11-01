@@ -1,11 +1,46 @@
 .sidebar {
   background: $darkest-color;
   width: $sidebar-width;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-left: .1rem solid $border-color;
+  border-right: .1rem solid $border-color;
   opacity: 0;
   animation: fade-in .25s forwards;
+  height: calc(100% - 8rem - 2.2rem);
+  float: left;
+}
+
+.sidebar__link {
+  display: block;
+  padding: 2rem 4rem;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .1em;
+  font-size: 1.2rem;
+  position: relative;
+
+  &:hover {
+    background: $darker-color;
+  }
+
+  i {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
+
+.sidebar__nav {
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar__subnav {
+  list-style: none;
+  margin: 0;
+
+  .sidebar__link {
+    padding: 1rem 2rem;
+  }
+
 }

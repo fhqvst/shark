@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions/user';
+import { authenticateUser } from '../actions/user';
 import Button from '../components/Button'
 
 export default class Login extends Component {
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnSubmit: event => {
-        dispatch(login({
+        dispatch(authenticateUser({
             username: event.target.querySelector('#username').value,
             password: event.target.querySelector('#password').value
         }));

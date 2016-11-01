@@ -1,5 +1,6 @@
 .titlebar {
   height: $titlebar-height;
   background: $darkest-color;
+  -webkit-user-select: none;
   -webkit-app-region: drag;
 }

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getOverview } from '../actions/user';
+import { fetchOverview } from '../actions/user';
 import Value from '../components/Value';
 
 class Metadata extends Component {
 
     componentDidMount() {
-        // this.props.dispatch(getOverview())
+        if(!this.props.user) {
+            this.props.dispatch(fetchOverview())
+        }
     }
 
     render() {

@@ -15,13 +15,15 @@ $sky-blue: #91D1E6;
 $ice-blue: #ddedf2;
 $light-blue: #AEC4CF;
 $black-blue: #1C2931;
-$dark-blue: lighten($black-blue, 10);
+$dark-blue: lighten($black-blue, 5);
 
 $darkest-color: $black-blue;
 $darker-color: $dark-blue;
 $light-color: $light-blue;
 $lighter-color: $ice-blue;
 $border-color: $dark-blue;
+
+$primary: $blue;
 
 // Breakpoints
 $tiny: max-width 480px;
@@ -31,7 +33,7 @@ $large: max-width 1280px;
 $huge: min-width 1440px;
 
 // Typography
-$font-family: Raleway, Montserrat, Century Gothic, Helvetica, Arial, sans-serif;
+//$font-family: Raleway, Montserrat, Century Gothic, Helvetica, Arial, sans-serif;
 
 $light: 300;
 $regular: 400;
@@ -63,4 +65,4 @@ $large-spacing: 4rem;
 $huge-spacing: 6rem;
 
 $titlebar-height: 2.2rem;
-$sidebar-width: 30rem;
+$sidebar-width: 24rem;

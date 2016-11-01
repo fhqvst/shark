@@ -1,25 +1,12 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { logout } from './actions/user'
-import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { persistStore, autoRehydrate } from 'redux-persist'
+import Shark from './containers/Shark'
+import { persistStore } from 'redux-persist'
+import { configureStore } from './store'
 import localforage from 'localforage';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger'
-import Shark from './containers/Shark';
-import reducer from './reducers'
-import Avanza from 'avanza'
-import Queue from 'promise-queue'
 
-const avanza = new Avanza();
-const queue = new Queue();
-
-const store = createStore(reducer,
-    applyMiddleware(
-        thunk.withExtraArgument({avanza, queue}),
-        createLogger()
-    ), autoRehydrate())
+const store = configureStore()
 
 class AppProvider extends Component {
 
@@ -28,35 +15,19 @@ class AppProvider extends Component {
         this.state = { rehydrated: false }
     }
 
-    componentWillMount(){
-        persistStore(store, {
-            storage: localforage,
-        }, () => {
-
-            if(new Date().getTime() - store.getState().user.timestamp > (86400 * 1000)) {
-                store.dispatch(logout())
-            } else {
-                avanza.authenticationSession = store.getState().user.authenticationSession
-                avanza.subscriptionId = store.getState().user.subscriptionId
-                avanza.securityToken = store.getState().user.securityToken
-            }
-
+    componentWillMount() {
+        persistStore(store, { storage: localforage }, () => {
             this.setState({ rehydrated: true })
-
         })
     }
 
     render() {
-        if(!this.state.rehydrated){
-            return false
-        }
-        return (
+        return this.state.rehydrated ?
             <Provider store={store}>
                 <Shark />
             </Provider>
-        )
+        : null
     }
 }
 
-render(
-    <AppProvider />, document.getElementById('Shark'))
+render(<AppProvider />, document.getElementById('Shark'))

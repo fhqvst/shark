@@ -1,3 +1,7 @@
+body {
+  background: $darkest-color;
+}
+
 .main {
   padding-right: $sidebar-width;
   @include clearfix;
@@ -13,5 +17,7 @@ html, body, #Shark, main, .main {
 }
 
 .content {
-  height: calc(100% - 10rem - 2.2rem);
+  height: calc(100% - 8rem - 2.2rem);
+  width: calc(100% - #{$sidebar-width});
+  float: left;
 }

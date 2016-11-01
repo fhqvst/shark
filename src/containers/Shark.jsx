@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { initUser } from '../actions/user'
 import Login from './Login';
-import Search from './Search';
-import Metadata from './Metadata';
-import Notifications from './Notifications';
-import MainTabs from './MainTabs';
 
 class Shark extends Component {
 
-    render() {
+    componentDidMount() {
+        const { dispatch } = this.props
+        dispatch(initUser())
+    }
 
+    render() {
         return this.props.user.authenticated ?
             <main>
                 <div className="titlebar"></div>
                 <header className="header">
-                    <Search />
-                    <Metadata />
                 </header>
+                <aside className="sidebar">
+                    <ul className="sidebar__nav">
+                        <li className="sidebar__item">
+                            <a href="#" className="sidebar__link"><i className="fa fa-book"></i> Analyze</a>
+                        </li>
+                        <li className="sidebar__item">
+                            <a href="#" className="sidebar__link"><i className="fa fa-bar-chart"></i> Invest</a>
+                        </li>
+                    </ul>
+                </aside>
                 <div className="content">
-                    <div className="main">
-                        <MainTabs />
-                    </div>
-                    <div className="sidebar">
-                        <Notifications />
+                    <div className="analyzer">
+
                     </div>
                 </div>
             </main> : <Login />
@@ -35,6 +41,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(
-    mapStateToProps
-)(Shark)
+export default connect(mapStateToProps)(Shark)

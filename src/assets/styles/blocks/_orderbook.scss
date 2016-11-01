@@ -6,7 +6,7 @@
   width: 100%;
 
   th {
-    @include title;
+    //@include title;
     font-size: 1.2rem;
     border-bottom: .1rem solid $border-color;
   }
@@ -44,7 +44,7 @@
   }
 
   tr:last-child td {
-    @include title;
+    //@include title;
   }
 
 }

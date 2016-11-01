@@ -2,19 +2,17 @@ $fa-font-path: '../../../node_modules/font-awesome/fonts/';
 @import 'font-awesome/scss/font-awesome.scss';
 
 @import 'base/settings',
-        'base/reset',
-        'base/fonts',
-        'base/animations',
-        'base/typography';
+        'base/animations';
 
-@import 'blocks/button',
-        'blocks/titlebar',
+@import 'nude-scss/scss/nude.scss';
+
+@import 'general';
+
+@import 'blocks/titlebar',
         'blocks/header',
         'blocks/grid',
         'blocks/search',
-        'blocks/tabs',
         'blocks/metadata',
-        'blocks/sidebar',
         'blocks/login',
         'blocks/orderbook',
         'blocks/notifications',
@@ -22,6 +20,6 @@ $fa-font-path: '../../../node_modules/font-awesome/fonts/';
         'blocks/value',
         'blocks/chart',
         'blocks/table',
-        'blocks/instrument',
-        'blocks/focus',
-        'blocks/layout';
+        'blocks/table',
+        'blocks/sidebar',
+        'blocks/instrument';

@@ -65,8 +65,8 @@
 
 }
 
-.login__username:before { content: '\f007' }
-.login__password:before { content: '\f084' }
+.login__username:before { content: $fa-var-user }
+.login__password:before { content: $fa-var-lock }
 
 .login__submit {
   font-size: 2rem;

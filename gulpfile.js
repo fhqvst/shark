@@ -12,8 +12,6 @@ const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const del = require('del')
 const livereload = require('gulp-livereload')
-const iconfontcss = require('gulp-iconfont-css')
-const iconfont = require('gulp-iconfont')
 const path = require('path')
 
 /**
@@ -37,10 +35,6 @@ const PATHS = {
     fonts: {
         src:    BASE + 'src/assets/fonts/**/*',
         dest:   BASE + 'dist/assets/fonts/'
-    },
-    icons: {
-        src:    BASE + 'src/assets/icons/**/*',
-        dest:   BASE + 'dist/assets/icons/'
     },
     view: {
         entry:    BASE + 'src/index.html',
@@ -116,32 +110,13 @@ function styles() {
 }
 
 /**
- * Grab all .svg's from the icons folder and generate an iconfont
- */
-function icons() {
-    return gulp.src(PATHS.icons.src + '.svg')
-        .pipe(iconfontcss({
-            fontName: 'icons',
-            targetPath: 'icons.css'
-        }))
-        .pipe(iconfont({
-            fontName: 'icons', // required
-            appendUnicode: false, // recommended option
-            normalize:true,
-            fontHeight: 1001,
-            formats: ['ttf', 'eot', 'woff', 'woff2', 'svg']
-        }))
-        .pipe(gulp.dest(PATHS.icons.dest))
-}
-
-/**
  * Browsers do not support require()-syntax, and Browserify solves this.
  * Start from the entry point and recursively compile imported files.
  */
 function scripts() {
     return gulp.src(PATHS.scripts.src)
-        .pipe(sourcemaps.init('.'))
         .pipe(babel())
+        .pipe(sourcemaps.init('.'))
         .on('error', function(e) {
             console.error('\n' + e.toString() + '\n')
             this.emit('end')
@@ -182,7 +157,7 @@ function view() {
 /**
  * Run all the build tasks
  */
-const build = gulp.series(styles, scripts, images, fonts, icons, view)
+const build = gulp.series(styles, scripts, images, fonts, view)
 
 /**
  * Run all the build tasks and start the livereload server

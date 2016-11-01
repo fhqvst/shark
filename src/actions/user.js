@@ -2,15 +2,23 @@ import {
     LOGIN, LOGOUT, INVALID_SESSION, METADATA
 } from '../constants';
 
-export function login(credentials) {
+export function initUser() {
+    return (dispatch, getState) => {
+        if(new Date().getTime() - store.getState().user.timestamp > (86400 * 1000)) {
+            dispatch(logout())
+        }
+    }
+}
+
+export function authenticateUser(credentials) {
     return (dispatch, getState, {avanza}) => {
         avanza.authenticate(credentials).then(authentication => {
-            dispatch(loggedIn(authentication))
+            dispatch(receiveAuthenticatedUser(authentication))
         }).catch(e => console.warn(e))
     }
 }
 
-export function loggedIn(authentication) {
+export function receiveAuthenticatedUser(authentication) {
     return {
         type: LOGIN,
         securityToken: authentication.securityToken,
@@ -27,12 +35,12 @@ export function logout() {
     }
 }
 
-export function getOverview() {
-    return (dispatch, getState, {avanza, queue}) => {
+export function fetchOverview() {
+    return (dispatch, getState, {avanza}) => {
 
         avanza.getOverview().then(overview => {
 
-            dispatch(gotMetadata({
+            dispatch(receiveUserMeta({
                 accounts: overview.accounts,
                 totalBalance: overview.totalBalance,
                 totalOwnCapital: overview.totalOwnCapital,
@@ -44,7 +52,7 @@ export function getOverview() {
     }
 }
 
-export function gotMetadata(metadata) {
+export function receiveUserMeta(metadata) {
     return {
         type: METADATA,
         metadata: metadata
